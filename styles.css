@@ -56,6 +56,11 @@ button {
 	max-width: 350px;
 }
 
+.landscape-video {
+	min-height: 300px;
+	max-width: 500px;
+}
+
 .game-vid {
 	max-width: 1080px;
 }
