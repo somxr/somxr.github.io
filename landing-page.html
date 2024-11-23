@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Grid Layout</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F8F8F8;
+        }
+
+        .navbar {
+            z-index: 1000;
+            padding-left: 1rem;
+            background-color: #F8F8F8;
+        }
+
+        .grid-wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            position: absolute;
+            /* This makes it independent of the navbar */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            /* Ensure it's below the navbar */
+        }
+
+        .video-grid {
+            display: grid;
+            gap: 20px;
+            /* Create 12 columns with adjusted aspect ratio */
+            grid-template-columns: repeat(10, minmax(0, 1fr));
+            grid-template-rows: repeat(14, minmax(0, 1fr));
+            /* Force wider columns than rows */
+            width: 1200px;
+            height: 800px;
+            min-width: 800px;
+            /* or your preferred minimum */
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            transform: translateY(-4px);
+            /* Slight lift */
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Grid spans for 12x12 grid */
+        .video-left {
+            grid-column: 1 / span 4;
+            /* Takes 6 columns */
+            grid-row: 1 / span 14;
+            /* Takes all 12 rows */
+        }
+
+        .video-top-right {
+            grid-column: 5 / span 6;
+            /* Takes remaining 6 columns */
+            grid-row: 1 / span 7;
+            /* Takes top 6 rows */
+        }
+
+        .video-bottom-right {
+            grid-column: 5 / span 4;
+            /* Takes 4 columns */
+            grid-row: 8 / span 7;
+            /* Takes bottom 6 rows */
+        }
+
+        .two-d-box {
+            grid-column: 9 / span 2;
+            /* Takes 4 columns */
+            grid-row: 8 / span 7;
+        }
+
+        .video-element {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* This ensures the video fills the container while maintaining aspect ratio */
+        }
+
+        /* Placeholder styling */
+        .placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #2c3e50;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Remove the background from the text itself */
+        /* Top title (existing) */
+        .video-title-top {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: thin;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 8px 20px;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0;
+        }
+
+        /* Bottom title (new) */
+        .video-title-bottom {
+            position: absolute;
+            bottom: 20px;
+            /* Changed from top to bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: thin;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 8px 20px;
+            letter-spacing: 0.5px;
+            opacity: 0.95;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 0;
+        }
+
+        /* Top gradient */
+        .video-container.top-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.5) 25%,
+                    rgba(0, 0, 0, 0) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Bottom gradient (new) */
+        .video-container.bottom-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            /* Changed from top to bottom */
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top,
+                    /* Changed direction */
+                    rgba(0, 0, 0, 0.7) 0%,
+                    rgba(0, 0, 0, 0.5) 25%,
+                    rgba(0, 0, 0, 0) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .video-grid {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1.5 / 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                aspect-ratio: auto;
+                min-width: unset;
+                /* Remove min-width on mobile */
+            }
+
+            .video-container {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+            }
+
+            /* Consider a specific order for mobile layout */
+            .video-left {
+                order: 1;
+            }
+
+            .video-top-right {
+                order: 2;
+            }
+
+            .video-bottom-right {
+                order: 3;
+            }
+
+            .two-d-box {
+                order: 4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html">SOMVR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/Somar_Behaviour_Interactive_Chair_CV.pdf">CV</a>
+                </div>
+                <div class="navbar-nav">
+                    <a class="nav-link"
+                        href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=somxr@outlook.com">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="grid-wrapper">
+        <div class="video-grid">
+            <!-- Left Video (top text) -->
+            <div class="video-container video-left top-text">
+                <div class="video-title-top">Augmented Reality</div>
+                <video src="assets/reciprocity_failure.mp4" autoplay muted loop playsinline class="video-element"
+                    preload="auto">
+                </video>
+            </div>
+
+            <!-- Top Right Video (top text) -->
+            <div class="video-container video-top-right top-text">
+                <div class="video-title-top">3D Visual Effects</div>
+                <video src="assets/sugar_rush01.mp4" autoplay muted loop playsinline class="video-element"
+                    preload="auto">
+                </video>
+            </div>
+
+            <!-- Bottom Right Video (bottom text) -->
+            <div class="video-container video-bottom-right bottom-text">
+                <div class="video-title-bottom">Game Dev</div>
+                <video src="assets/VexField-vid.mp4" autoplay muted loop playsinline class="video-element"
+                    preload="auto">
+                </video>
+            </div>
+
+            <!-- 2D Box Video (bottom text) -->
+            <div class="video-container two-d-box bottom-text">
+                <div class="video-title-bottom">Design</div>
+                <video src="assets/liquid_pom.mp4" autoplay muted loop playsinline class="video-element" preload="auto">
+                </video>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
