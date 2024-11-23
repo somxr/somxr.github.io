@@ -1,99 +1,349 @@
-/* [class *= "col"] {
-	padding: 1rem;
-	background-color: skyblue;
-	color: white;
-	border: 2px dashed white;
-} */
-
-.cropped {
-	width: 82%;
-	height: 63%;
-	object-fit: cover;
-	overflow: hidden;
-	/* margin: 0px 0px 0px 0px; */
-}
-
-.analytics-col {
-	margin: 0px 0px -10% 0px;
-}
-
-.main-container {
-	max-width: 1350px !important;
-	margin: 0 auto;
-}
-
-#filter-grid {
-	overflow-x: hidden;
-}
-
-html {
-	overflow-x: hidden;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	background-color: rgb(8, 8, 8);
+	background-color: #F8F8F8;
 }
 
-nav {
-	background-color: rgb(8, 8, 8);
+.navbar {
+	z-index: 1000;
+	padding-left: 1rem;
+	background-color: #F8F8F8;
 }
 
-video {
+.grid-wrapper {
+	min-height: 100vh;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	padding: 20px;
+	font-family: system-ui, -apple-system, sans-serif;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	gap: 60px;
+	/* Space between text and grid */
+}
+
+
+.side-content {
+	flex-shrink: 0;
+	/* Prevent shrinking */
+	width: 300px;
+	/* Adjust based on your needs */
+	color: #333;
+	/* Adjust color as needed */
+}
+
+/* Add some basic styling for the text */
+.side-content h2 {
+	margin-bottom: 1rem;
+	font-size: 2rem;
+	font-weight: 300;
+}
+
+.side-content p {
+	line-height: 1.6;
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+.video-grid {
+	display: grid;
+	gap: 20px;
+	/* Create 12 columns with adjusted aspect ratio */
+	grid-template-columns: repeat(10, minmax(0, 1fr));
+	grid-template-rows: repeat(14, minmax(0, 1fr));
+	/* Force wider columns than rows */
+	width: 1100px;
+	height: 750px;
+	min-width: 800px;
+	/* or your preferred minimum */
+}
+
+.video-container {
+	position: relative;
 	width: 100%;
-	/* border-radius: 10px; */
+	height: 100%;
+	background: #000;
+	border-radius: 8px;
 	overflow: hidden;
+	transition: all 0.3s ease;
 }
 
-a.btn {
-	border-radius: 0px !important;
+.video-container:hover {
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
+	transform: translateY(-5px) scale(101%);
+	/* transform: ; */
+	/* Slight lift */
 }
 
-button {
-	border-radius: 0px !important;
+.video-container video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
-.manneq-video {
-	max-width: 350px;
+.video-link {
+	text-decoration: none;
+	/* Removes underline from links */
+	color: inherit;
+	/* Maintains current text color */
+	display: contents;
+	/* Makes the anchor behave like its children */
 }
 
-.landscape-video {
-	min-height: 300px;
-	max-width: 500px;
+/* Optional: Add focus styles for accessibility */
+.video-link:focus .video-container {
+	outline: 2px solid #4A90E2;
+	outline-offset: 2px;
 }
 
-.game-vid {
-	max-width: 1080px;
+/* Grid spans for 12x12 grid */
+.ar-video {
+	grid-column: 1 / span 4;
+	/* Takes 6 columns */
+	grid-row: 1 / span 14;
+	/* Takes all 12 rows */
 }
 
-.nav li button {
-	color: aliceblue !important;
+.vfx-video {
+	grid-column: 5 / span 6;
+	/* Takes remaining 6 columns */
+	grid-row: 1 / span 7;
+	/* Takes top 6 rows */
 }
 
-.nav li button.active {
-	color: black !important;
-	background-color: white !important;
+.games-video {
+	grid-column: 5 / span 4;
+	/* Takes 4 columns */
+	grid-row: 8 / span 7;
+	/* Takes bottom 6 rows */
 }
 
-/* .nav-item {
-	border-bottom: 3px solid white;
-} */
-
-.hvr-fade {
-	display: inline-block;
-	vertical-align: middle;
-	-webkit-transform: perspective(1px) translateZ(0);
-	transform: perspective(1px) translateZ(0);
-	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-	overflow: hidden;
-	-webkit-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-transition-property: color, background-color;
-	transition-property: color, background-color;
+.design-box {
+	grid-column: 9 / span 2;
+	/* Takes 4 columns */
+	grid-row: 8 / span 7;
 }
-.hvr-fade:hover,
-.hvr-fade:focus,
-.hvr-fade:active {
-	background-color: #ffffffda;
+
+.video-element {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* This ensures the video fills the container while maintaining aspect ratio */
+}
+
+/* Placeholder styling */
+.placeholder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #2c3e50;
 	color: white;
+	font-size: 1.2rem;
+}
+
+/* Remove the background from the text itself */
+/* Top title (existing) */
+.video-title-top {
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: 300;
 	z-index: 2;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	padding: 8px 20px;
+	letter-spacing: 0.5px;
+	opacity: 0.95;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0;
+}
+
+/* Bottom title (new) */
+.video-title-bottom {
+	position: absolute;
+	bottom: 20px;
+	/* Changed from top to bottom */
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	font-size: 1.5rem;
+	font-weight: thin;
+	z-index: 2;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	padding: 8px 20px;
+	letter-spacing: 0.5px;
+	opacity: 0.95;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0;
+}
+
+/* Top gradient */
+.video-container.top-text::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 120px;
+	background: linear-gradient(to bottom,
+			rgba(0, 0, 0, 0.7) 0%,
+			rgba(0, 0, 0, 0.5) 25%,
+			rgba(0, 0, 0, 0) 100%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+/* Bottom gradient (new) */
+.video-container.bottom-text::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	/* Changed from top to bottom */
+	left: 0;
+	right: 0;
+	height: 120px;
+	background: linear-gradient(to top,
+			/* Changed direction */
+			rgba(0, 0, 0, 0.7) 0%,
+			rgba(0, 0, 0, 0.5) 25%,
+			rgba(0, 0, 0, 0) 100%);
+	pointer-events: none;
+	z-index: 1;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+	.grid-wrapper {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.video-grid {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1.5 / 1;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.grid-wrapper {
+		padding-top: 6rem;
+	}
+
+	.video-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		aspect-ratio: auto;
+		min-width: unset;
+
+		/* Remove min-width on mobile */
+	}
+
+	.video-container {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+	}
+
+	/* Consider a specific order for mobile layout */
+	.ar-video {
+		order: 1;
+	}
+
+	.vfx-video {
+		order: 2;
+	}
+
+	.games-video {
+		order: 3;
+	}
+
+	.design-box {
+		order: 4;
+	}
+}
+/* 
+########################################### */
+
+ /* Update just the logo styling */
+ .unity-logo {
+	width: 40%;
+	max-width: 110px; /* Added a max-width to prevent it from getting too large */
+	border-radius: 25px;
+}
+
+.project-section {
+	padding: 1rem 0.75rem;
+	margin: 1rem 0;
+}
+
+.project-content {
+	text-align: center;
+	color: white;
+}
+.project-description {
+	margin-bottom: 1.5rem;
+}
+/* Add specific button size styles */
+.project-btn {
+	font-size: 1.5rem; /* matches btn-lg */
+	padding: 0.5rem 1rem;
+}
+
+@media (min-width: 576px) {
+	.project-btn {
+		padding: 0.5rem 2rem;
+	}
+}
+
+/* Responsive text styles */
+@media (max-width: 575px) {
+	.project-title {
+		font-size: 5vw;
+	}
+	
+	.project-tech {
+		font-size: 3.25vw;
+	}
+	
+	.project-description {
+		font-size: 3.25vw;
+	}
+	.project-description {
+		margin-bottom: 1rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.project-section {
+		padding: 3rem 0;
+		margin: 3rem 0;
+	}
 }

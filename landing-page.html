@@ -27,18 +27,41 @@
         .grid-wrapper {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             padding: 20px;
             font-family: system-ui, -apple-system, sans-serif;
             position: absolute;
-            /* This makes it independent of the navbar */
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             z-index: 0;
-            /* Ensure it's below the navbar */
+            gap: 60px;
+            /* Space between text and grid */
+        }
+
+
+        .side-content {
+            flex-shrink: 0;
+            /* Prevent shrinking */
+            width: 300px;
+            /* Adjust based on your needs */
+            color: #333;
+            /* Adjust color as needed */
+        }
+
+        /* Add some basic styling for the text */
+        .side-content h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        .side-content p {
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 1rem;
         }
 
         .video-grid {
@@ -48,8 +71,8 @@
             grid-template-columns: repeat(10, minmax(0, 1fr));
             grid-template-rows: repeat(14, minmax(0, 1fr));
             /* Force wider columns than rows */
-            width: 1200px;
-            height: 800px;
+            width: 1100px;
+            height: 750px;
             min-width: 800px;
             /* or your preferred minimum */
         }
@@ -65,8 +88,9 @@
         }
 
         .video-container:hover {
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.75);
+            transform: translateY(-5px) scale(101%);
+            /* transform: ; */
             /* Slight lift */
         }
 
@@ -79,29 +103,44 @@
             object-fit: cover;
         }
 
+        .video-link {
+            text-decoration: none;
+            /* Removes underline from links */
+            color: inherit;
+            /* Maintains current text color */
+            display: contents;
+            /* Makes the anchor behave like its children */
+        }
+
+        /* Optional: Add focus styles for accessibility */
+        .video-link:focus .video-container {
+            outline: 2px solid #4A90E2;
+            outline-offset: 2px;
+        }
+
         /* Grid spans for 12x12 grid */
-        .video-left {
+        .ar-video {
             grid-column: 1 / span 4;
             /* Takes 6 columns */
             grid-row: 1 / span 14;
             /* Takes all 12 rows */
         }
 
-        .video-top-right {
+        .vfx-video {
             grid-column: 5 / span 6;
             /* Takes remaining 6 columns */
             grid-row: 1 / span 7;
             /* Takes top 6 rows */
         }
 
-        .video-bottom-right {
+        .games-video {
             grid-column: 5 / span 4;
             /* Takes 4 columns */
             grid-row: 8 / span 7;
             /* Takes bottom 6 rows */
         }
 
-        .two-d-box {
+        .design-box {
             grid-column: 9 / span 2;
             /* Takes 4 columns */
             grid-row: 8 / span 7;
@@ -141,7 +180,7 @@
             transform: translateX(-50%);
             color: white;
             font-size: 1.5rem;
-            font-weight: thin;
+            font-weight: 300;
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             padding: 8px 20px;
@@ -210,6 +249,11 @@
 
         /* Responsive Design */
         @media (max-width: 1400px) {
+            .grid-wrapper {
+                flex-direction: column;
+                gap: 10px;
+            }
+
             .video-grid {
                 width: 100%;
                 height: auto;
@@ -218,12 +262,18 @@
         }
 
         @media (max-width: 768px) {
+
+            .grid-wrapper {
+                padding-top: 6rem;
+            }
+
             .video-grid {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
                 aspect-ratio: auto;
                 min-width: unset;
+
                 /* Remove min-width on mobile */
             }
 
@@ -233,19 +283,19 @@
             }
 
             /* Consider a specific order for mobile layout */
-            .video-left {
+            .ar-video {
                 order: 1;
             }
 
-            .video-top-right {
+            .vfx-video {
                 order: 2;
             }
 
-            .video-bottom-right {
+            .games-video {
                 order: 3;
             }
 
-            .two-d-box {
+            .design-box {
                 order: 4;
             }
         }
@@ -272,37 +322,50 @@
         </div>
     </nav>
     <div class="grid-wrapper">
+        <div class="side-content">
+            <h2>Hi, I'm Somar</h2>
+            <p>Welcome to my portfolio. I make digital and usually interactive art.</p>
+        </div>
         <div class="video-grid">
-            <!-- Left Video (top text) -->
-            <div class="video-container video-left top-text">
-                <div class="video-title-top">Augmented Reality</div>
-                <video src="assets/reciprocity_failure.mp4" autoplay muted loop playsinline class="video-element"
-                    preload="auto">
-                </video>
-            </div>
+            <!-- AR Video -->
+            <a href="/augmented-reality.html" class="video-link">
+                <div class="video-container ar-video top-text">
+                    <div class="video-title-top">Augmented Reality</div>
+                    <video src="assets/reciprocity_failure.mp4" autoplay muted loop playsinline class="video-element"
+                        preload="auto">
+                    </video>
+                </div>
+            </a>
 
-            <!-- Top Right Video (top text) -->
-            <div class="video-container video-top-right top-text">
-                <div class="video-title-top">3D Visual Effects</div>
-                <video src="assets/sugar_rush01.mp4" autoplay muted loop playsinline class="video-element"
-                    preload="auto">
-                </video>
-            </div>
+            <!-- VFX Video -->
+            <a href="/visual-effects.html" class="video-link">
+                <div class="video-container vfx-video top-text">
+                    <div class="video-title-top">3D Visual Effects</div>
+                    <video src="assets/sugar_rush01.mp4" autoplay muted loop playsinline class="video-element"
+                        preload="auto">
+                    </video>
+                </div>
+            </a>
 
-            <!-- Bottom Right Video (bottom text) -->
-            <div class="video-container video-bottom-right bottom-text">
-                <div class="video-title-bottom">Game Dev</div>
-                <video src="assets/VexField-vid.mp4" autoplay muted loop playsinline class="video-element"
-                    preload="auto">
-                </video>
-            </div>
+            <!-- Game Dev Video -->
+            <a href="/game-development.html" class="video-link">
+                <div class="video-container games-video bottom-text">
+                    <div class="video-title-bottom">Game Dev</div>
+                    <video src="assets/VexField-vid.mp4" autoplay muted loop playsinline class="video-element"
+                        preload="auto">
+                    </video>
+                </div>
+            </a>
 
-            <!-- 2D Box Video (bottom text) -->
-            <div class="video-container two-d-box bottom-text">
-                <div class="video-title-bottom">Design</div>
-                <video src="assets/liquid_pom.mp4" autoplay muted loop playsinline class="video-element" preload="auto">
-                </video>
-            </div>
+            <!-- Design Video -->
+            <a href="/design.html" class="video-link">
+                <div class="video-container design-box bottom-text">
+                    <div class="video-title-bottom">Design</div>
+                    <video src="assets/liquid_pom.mp4" autoplay muted loop playsinline class="video-element"
+                        preload="auto">
+                    </video>
+                </div>
+            </a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
