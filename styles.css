@@ -6,18 +6,51 @@
 
 body {
 	background-color: #F8F8F8;
-	
+	font-family: system-ui, -apple-system, sans-serif;
 }
 
+/* #################################################################################################### */
+/* #################################################################################################### */
+
+/* Navigation */
+
 .navbar {
-	z-index: 1000;
-	padding-left: 1rem;
+	padding: 1rem;
 	background-color: #F8F8F8;
+	position: relative;
+	z-index: 1000;
 }
-.main-container {
-	max-width: 1350px !important;
+
+.nav-container {
+	max-width: 1200px;
 	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
+
+.nav-brand {
+	font-size: 1.25rem;
+	text-decoration: none;
+	color: #000;
+}
+
+.nav-links {
+	display: flex;
+	gap: 2rem;
+}
+
+.nav-link {
+	text-decoration: none;
+	color: #000;
+}
+
+
+/* #################################################################################################### */
+/* #################################################################################################### */
+
+/* Landing page grid  */
+
 .grid-wrapper {
 	min-height: 100vh;
 	display: flex;
@@ -293,75 +326,155 @@ body {
 		order: 4;
 	}
 }
-/* 
-#################################################################################################### */
 
- /* Update just the logo styling */
- .unity-logo {
-	width: 40%;
-	max-width: 110px; /* Added a max-width to prevent it from getting too large */
-	border-radius: 25px;
+/* #################################################################################################### */
+/* #################################################################################################### */
+/* #################################################################################################### */
+
+/* Project description template  */
+
+/* Main content */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
 }
 
 .project-section {
-	padding: 1rem 0.75rem;
-	margin: 1rem 0;
+	display: flex;
+	align-items: center;
+	margin: 4rem 0;
+	/* gap: 2rem; */
 }
 
-.project-content {
+/* Create equal halves */
+.content-half {
+	flex: 0 0 50%;
+	/* Take exactly half, don't grow or shrink */
+	display: flex;
+	justify-content: center;
+	/* Center content horizontally in its half */
+}
+
+
+.video-wrapper {
+	width: 350px;
+	/* Your video width */
+	position: relative;
+	aspect-ratio: 9 / 16;
+	overflow: hidden;
+}
+
+/* Content styling */
+.content-wrapper {
+	/* width: 500px; */
+	/* Or your preferred width */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	text-align: center;
-	color: white;
 }
+
+.logo {
+	width: 110px;
+	border-radius: 25px;
+	margin-bottom: 1rem;
+}
+
+.project-title {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+}
+
+.project-tech {
+	font-size: 1.5rem;
+	font-weight: 300;
+	margin-bottom: 1rem;
+}
+
 .project-description {
-	margin-bottom: 1.5rem;
-}
-/* Add specific button size styles */
-.project-btn {
-	font-size: 1.5rem; /* matches btn-lg */
-	padding: 0.5rem 1rem;
+	font-size: 1.25rem;
+	font-weight: 300;
+	margin-bottom: 2rem;
+	max-width: 100%;
 }
 
-.default-video {
-	max-width: 350px;
-	width: 100%;
-	/* border-radius: 10px; */
-	overflow: hidden;
+.btn {
+	display: inline-block;
+	padding: 0.8rem 2rem;
+	font-size: 1.25rem;
+	text-decoration: none;
+	color: #000;
+	border: 1px solid #000;
+	transition: all 0.3s ease;
 }
 
-.special-video {
-	max-width: 500px;
-	width: 100%;
-	/* border-radius: 10px; */
-	overflow: hidden;
+.btn:hover {
+	background-color: #000;
+	color: #fff;
 }
 
-@media (min-width: 576px) {
-	.project-btn {
-		padding: 0.5rem 2rem;
-	}
+
+/* Add this to your CSS */
+.project-section:nth-child(even) .content-half:first-child {
+	order: 2;
 }
 
-/* Responsive text styles */
-@media (max-width: 575px) {
-	.project-title {
-		font-size: 5vw;
-	}
-	
-	.project-tech {
-		font-size: 3.25vw;
-	}
-	
-	.project-description {
-		font-size: 3.25vw;
-	}
-	.project-description {
-		margin-bottom: 1rem;
-	}
+.project-section:nth-child(even) .content-half:last-child {
+	order: 1;
 }
 
-@media (min-width: 576px) {
+
+/* Responsive design */
+@media (max-width: 768px) {
 	.project-section {
-		padding: 3rem 0;
-		margin: 3rem 0;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.video-wrapper {
+		width: 100%;
+	}
+
+	.content-wrapper {
+		width: 100%;
+	}
+
+	.project-description {
+		max-width: 100%;
+	}
+
+	/* Reset the order on mobile if you want content to always be below video */
+    .project-section .content-half {
+        order: 0; /* or specific orders for mobile layout */
+    }
+    
+    /* Or keep the alternating pattern */
+    .project-section:nth-child(even) .content-half:first-child {
+        order: 0;
+    }
+    
+    .project-section:nth-child(even) .content-half:last-child {
+        order: 0;
+    }
+}
+
+@media (max-width: 480px) {
+	.project-title {
+		font-size: 1.5rem;
+	}
+
+	.project-tech {
+		font-size: 1rem;
+	}
+
+	.project-description {
+		font-size: 1rem;
+	}
+
+	.btn {
+		padding: 0.6rem 1.5rem;
+		font-size: 1rem;
 	}
 }
