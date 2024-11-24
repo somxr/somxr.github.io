@@ -6,6 +6,7 @@
 
 body {
 	background-color: #F8F8F8;
+	
 }
 
 .navbar {
@@ -13,7 +14,10 @@ body {
 	padding-left: 1rem;
 	background-color: #F8F8F8;
 }
-
+.main-container {
+	max-width: 1350px !important;
+	margin: 0 auto;
+}
 .grid-wrapper {
 	min-height: 100vh;
 	display: flex;
@@ -290,7 +294,7 @@ body {
 	}
 }
 /* 
-########################################### */
+#################################################################################################### */
 
  /* Update just the logo styling */
  .unity-logo {
@@ -315,6 +319,20 @@ body {
 .project-btn {
 	font-size: 1.5rem; /* matches btn-lg */
 	padding: 0.5rem 1rem;
+}
+
+.default-video {
+	max-width: 350px;
+	width: 100%;
+	/* border-radius: 10px; */
+	overflow: hidden;
+}
+
+.special-video {
+	max-width: 500px;
+	width: 100%;
+	/* border-radius: 10px; */
+	overflow: hidden;
 }
 
 @media (min-width: 576px) {
