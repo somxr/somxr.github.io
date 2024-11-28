@@ -173,6 +173,15 @@ body {
 	grid-row: 8 / span 7;
 }
 
+.video-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .video-element {
 	position: absolute;
 	top: 0;
@@ -335,7 +344,7 @@ body {
 
 /* Main content */
 .container {
-	max-width: 1200px;
+	max-width: 1800px;
 	margin: 0 auto;
 	padding: 0 1rem;
 }
@@ -358,11 +367,43 @@ body {
 
 
 .video-wrapper {
-	width: 350px;
+	width: 100%;
+	max-width: 450px;
 	/* Your video width */
 	position: relative;
 	aspect-ratio: 9 / 16;
 	overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+	/* or 'contain' depending on your preference */
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image-wrapper {
+	
+	width: 100%;
+	max-width: 600px;
+	/* Your video width */
+	position: relative;
+	aspect-ratio: 9 / 16;
+	overflow: hidden;
+}
+
+
+/* Add this alongside your existing video-wrapper styles */
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Content styling */
@@ -381,6 +422,18 @@ body {
 	margin-bottom: 1rem;
 }
 
+/* Add this to your existing CSS */
+.logo.framestore {
+    width: 300px; /* Adjust this value to your preferred size */
+    mix-blend-mode: multiply;
+    filter: invert(1); /* This inverts black to white and vice versa */
+}
+
+.logo.facemeshgl {
+	mix-blend-mode: multiply;
+    filter: invert(1); /* This inverts black to white and vice versa */
+}
+
 .project-title {
 	font-size: 2.5rem;
 	font-weight: 500;
@@ -397,7 +450,8 @@ body {
 	font-size: 1.25rem;
 	font-weight: 300;
 	margin-bottom: 2rem;
-	max-width: 100%;
+	width:100%;
+	max-width: 700px;
 }
 
 .btn {
@@ -433,9 +487,15 @@ body {
 		gap: 2rem;
 	}
 
-	.video-wrapper {
+	.content-half {
+		flex: 1 1 100%;  /* Allow full width */
 		width: 100%;
-	}
+	  }
+	
+	  .video-wrapper {
+		width: 100%;     /* Make video wrapper full width of container */
+		max-width: 300px; /* But don't let it get wider than original desktop size */
+	  }
 
 	.content-wrapper {
 		width: 100%;
@@ -478,3 +538,334 @@ body {
 		font-size: 1rem;
 	}
 }
+
+
+/* ####################################################################################################
+######################################################################################################### */
+
+.section-overlay {
+	height: 90vh;
+	overflow: hidden;
+	/* Prevent content from spilling out */
+	position: relative;
+	/* Create positioning context */
+	padding-left: 14rem;
+	padding-right: 14rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	max-width: 2000px;
+	max-height: 1000px;
+	 /* Add these lines to center the section */
+	 margin-left: auto;
+	 margin-right: auto;
+}
+
+.article-overlay {
+	width: 100%;
+	height: 100%;
+	/* Changed from min-height to fixed height */
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr 1fr minmax(0, 40ch) 1fr;
+	grid-template-rows: 20% 2fr auto auto 1fr;
+	position: relative;
+	/* Create positioning context */
+	overflow: hidden;
+	/* Contains the video */
+}
+
+.h1-overlay {
+	font-size: clamp(1.3rem, 1.8vmax, 2.5rem);  /* Won't go smaller than 1.2rem */
+
+	grid-column: 3 / 6;
+	grid-row: 3 / 4;
+	align-self: start;
+	background: black;
+	color: white;
+	margin: 0;
+	padding: 22px;
+	line-height: 1.2;
+	font-weight: normal;
+	z-index: 2;
+	position: relative;
+	/* border-color: #F8F8F8; */
+	/* Required - can be solid, dashed, dotted, etc. */
+    /* border-style: solid;     */
+	 /* Adjust thickness as needed */
+    border-width: 2px;     
+}
+
+.vid-overlay {
+	grid-column: 2 / 5;
+	grid-row: 1 / 6;
+	width: 70%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center bottom;
+	position: relative;
+	z-index: 1;
+}
+
+.p-overlay {
+	background: white;
+	padding: 22px;
+	margin: 0;
+}
+
+div.txt-overlay {
+	font-size: clamp(1rem, 1.2vmax, 1.8rem);  
+	grid-column: 3 / 6;
+	grid-row: 4 / 5;
+	z-index: 2;
+	position: relative;
+	/* Ensures z-index works */
+	background: white;
+	/* Ensure text container has background */
+	max-height: 100%;
+	/* Prevent overflow */
+	overflow-y: auto;
+	/* Allow scrolling if content is too long */
+}
+
+@media (max-width: 1150px) {
+	.section-overlay {
+		padding: 1rem;
+	}
+	.vid-overlay {
+		grid-column: 2 / 6;
+	}
+}
+
+@media (max-width: 480px) {
+	section.overlay {
+		height: 70vh;
+	}
+	.vid-overlay {
+		width: 90%;}
+	.h1-overlay {
+		margin-top: 10rem;
+		margin-left: 1rem;
+		grid-column: 4/6;
+	}
+
+	div.txt-overlay {
+		margin-left: 1rem;
+		grid-column: 4 / 6;
+		grid-row: 4 / 5;
+		z-index: 2;
+		position: relative;
+		/* Ensures z-index works */
+		background: white;
+		/* Ensure text container has background */
+		max-height: 100%;
+		/* Prevent overflow */
+		overflow-y: auto;
+		/* Allow scrolling if content is too long */
+	}
+}
+
+/* ###############################################################################################
+############################################################################################### */
+.vision-statement {
+    width: 100%;
+	padding: 8rem 3rem;
+    margin: 6rem 0;  /* This adds 6rem of space above and below the section */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vision-text {
+    max-width: 1400px;  /* Reduced from 1800px for more contained look */
+    font-size: clamp(2rem, 3vmax, 4rem);  /* Slightly reduced max size */
+    line-height: 1.2;  /* Slightly increased line height for boxier feel */
+    margin: 0 auto;
+    font-weight: normal;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .vision-statement {
+        padding: 4rem 1.5rem;
+    }
+}
+
+
+
+
+
+
+
+/* ###############################################################################################
+############################################################################################### */
+
+.filter-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 8rem auto;  /* Vertical spacing with horizontal auto */
+}
+.filter-grid-item {
+	position: relative;
+	width: 100%;
+	padding-bottom: 177.78%;
+	background: #f0f0f0;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.filter-grid-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+}
+
+@media (max-width: 768px) {
+	.filter-grid-wrapper {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+
+
+
+/* ################################################################################################### */
+/* ###################################################################################################### */
+
+.analytics-container {
+    width: 100%;
+    padding: 2rem;
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;  /* Space between heading and image */
+}
+
+.analytics-text {
+    max-width: 1400px;
+    font-size: clamp(1.8rem, 3vmax, 4rem);
+    line-height: 1.2;
+    margin: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.analytics-image {
+    max-width: 1400px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+
+
+/* ################################################################################################### */
+/* ###################################################################################################### */
+
+/* Add this to your CSS to establish consistent section spacing */
+
+.vision-statement,
+.analytics-container,
+.project-section {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+@media (max-width: 768px) {
+    .vision-statement,
+    .analytics-container,
+    .project-section {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .filter-grid-wrapper {
+        margin: 4rem auto;
+    }
+}
+
+/* ################################################################################################################# */
+.sugar-rush-section {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sugar-rush-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    /* Set aspect ratio to match video */
+    aspect-ratio: 16/9;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.sugar-rush-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.sugar-rush-content {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1;
+    color: white;
+}
+.sugar-rush-content h2 {
+    font-size: clamp(2rem, 3vmax, 4rem);
+    line-height: 1.2;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.sugar-rush-content p {
+    font-size: clamp(1rem, 1.5vmax, 2.5rem);
+    line-height: 1.2;
+    font-weight: lighter;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .sugar-rush-section {
+        height: auto;
+        margin: 2rem 0;
+    }
+    
+    .sugar-rush-wrapper {
+        padding: 0 1rem;
+    }
+    
+    .sugar-rush-content {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    /* Added these new styles */
+    .sugar-rush-content h2 {
+        font-size: clamp(1.5rem, 2vmax, 2rem);
+    }
+
+    .sugar-rush-content p {
+        font-size: clamp(1rem, 1.5vmax, 1.5rem);
+    }
+}
+
+/* ##########################################################################################################################*/
+

@@ -1,0 +1,158 @@
+/* [class *= "col"] {
+	padding: 1rem;
+	background-color: skyblue;
+	color: white;
+	border: 2px dashed white;
+} */
+
+.cropped {
+	width: 82%;
+	height: 63%;
+	object-fit: cover;
+	overflow: hidden;
+	/* margin: 0px 0px 0px 0px; */
+}
+
+.analytics-col {
+	margin: 0px 0px -10% 0px;
+}
+
+.main-container {
+	max-width: 1350px !important;
+	margin: 0 auto;
+}
+
+#filter-grid {
+	overflow-x: hidden;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	background-color: rgb(8, 8, 8);
+}
+
+nav {
+	background-color: rgb(8, 8, 8);
+}
+
+video {
+	width: 100%;
+	/* border-radius: 10px; */
+	overflow: hidden;
+}
+
+a.btn {
+	border-radius: 0px !important;
+}
+
+button {
+	border-radius: 0px !important;
+}
+
+.manneq-video {
+	max-width: 350px;
+}
+
+.landscape-video {
+	min-height: 300px;
+	max-width: 500px;
+}
+
+.game-vid {
+	max-width: 1080px;
+}
+
+.nav li button {
+	color: aliceblue !important;
+}
+
+.nav li button.active {
+	color: black !important;
+	background-color: white !important;
+}
+
+/* .nav-item {
+	border-bottom: 3px solid white;
+} */
+
+.hvr-fade {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	overflow: hidden;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: color, background-color;
+	transition-property: color, background-color;
+}
+.hvr-fade:hover,
+.hvr-fade:focus,
+.hvr-fade:active {
+	background-color: #ffffffda;
+	color: white;
+	z-index: 2;
+}
+
+/* 
+########################################### */
+
+ /* Update just the logo styling */
+ .unity-logo {
+	width: 40%;
+	max-width: 110px; /* Added a max-width to prevent it from getting too large */
+	border-radius: 25px;
+}
+
+.project-section {
+	padding: 1rem 0.75rem;
+	margin: 1rem 0;
+}
+
+.project-content {
+	text-align: center;
+	color: white;
+}
+.project-description {
+	margin-bottom: 1.5rem;
+}
+/* Add specific button size styles */
+.project-btn {
+	font-size: 1.5rem; /* matches btn-lg */
+	padding: 0.5rem 1rem;
+}
+
+@media (min-width: 576px) {
+	.project-btn {
+		padding: 0.5rem 2rem;
+	}
+}
+
+/* Responsive text styles */
+@media (max-width: 575px) {
+	.project-title {
+		font-size: 5vw;
+	}
+	
+	.project-tech {
+		font-size: 3.25vw;
+	}
+	
+	.project-description {
+		font-size: 3.25vw;
+	}
+	.project-description {
+		margin-bottom: 1rem;
+	}
+}
+
+@media (min-width: 576px) {
+	.project-section {
+		padding: 3rem 0;
+		margin: 3rem 0;
+	}
+}
