@@ -750,6 +750,8 @@ div.txt-overlay {
     text-align: center;
 }
 
+
+
 @media (max-width: 480px) {
     .vision-statement {
         padding: 4rem 1.5rem;
@@ -845,6 +847,15 @@ div.txt-overlay {
     margin-bottom: 8rem;
 }
 
+@media (max-width: 900px) {
+    .vision-statement,
+    .analytics-container,
+    .project-section {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+}
+
 @media (max-width: 768px) {
     .vision-statement,
     .analytics-container,
@@ -909,8 +920,8 @@ div.txt-overlay {
     margin-top: 0.5rem;
 }
 
-@media (max-width: 768px) {
-    .sugar-rush-section {
+@media (max-width: 1024px) {
+	.sugar-rush-section {
         height: auto;
         margin: 2rem 0;
     }
@@ -923,7 +934,11 @@ div.txt-overlay {
         top: 1.5rem;
         left: 1.5rem;
     }
+	
+}
 
+@media (max-width: 768px) {
+    
     /* Added these new styles */
     .sugar-rush-content h2 {
         font-size: clamp(1.5rem, 2vmax, 2rem);
