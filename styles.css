@@ -957,6 +957,73 @@ div.txt-overlay {
 }
 
 /* ##########################################################################################################################*/
+/* ############################################################################################################################ */
 
+.end-navigation {
+    display: flex;
+    width: 100%;
+    height: 250px; /* Increased height to accommodate larger text */
+    margin-top: 8rem;
+}
 
-  
+.end-nav-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* Increased gap between text and arrow */
+    background: none;
+    border: 1px solid #000;
+    color: #000;
+    font-size: 2rem; /* Increased from 1.5rem */
+    font-weight: 300;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    position: relative;
+}
+
+.end-nav-btn:first-child {
+    border-right: none;
+}
+
+.end-nav-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+.arrow-icon {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
+    width: 32px; /* Increased from 24px */
+    height: 32px; /* Increased from 24px */
+}
+
+.end-nav-btn:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .end-navigation {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .end-nav-btn {
+        padding: 3rem; /* Increased padding for mobile */
+        font-size: 1.75rem; /* Slightly smaller font on mobile but still larger than original */
+    }
+
+    .end-nav-btn:first-child {
+        border-right: 1px solid #000;
+        border-bottom: none;
+    }
+}

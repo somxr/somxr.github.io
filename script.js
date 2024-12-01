@@ -33,3 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleMenu();
     });
 });
+
+// Add this to your existing script.js
+document.querySelector('.menu-trigger').addEventListener('click', function() {
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const body = document.body;
+    
+    menuOverlay.style.display = 'block';
+    setTimeout(() => {
+        menuOverlay.classList.add('active');
+        body.classList.add('menu-open');
+    }, 10);
+});
