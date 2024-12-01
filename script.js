@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start menu animation immediately
         if (menuOverlay.style.display === 'none' || !menuOverlay.style.display) {
             menuOverlay.style.display = 'block';
+            document.body.classList.add('menu-open'); // Add class when opening
             requestAnimationFrame(() => {
                 menuOverlay.classList.add('active');
             });
         } else {
             menuOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open'); // Remove class when closing
             setTimeout(() => {
                 menuOverlay.style.display = 'none';
             }, 500);
