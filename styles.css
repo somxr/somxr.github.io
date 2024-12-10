@@ -365,10 +365,11 @@ body.menu-open {
 	.grid-wrapper {
 		padding-top: 2rem; /* Reduced from 6rem to give more space to content */
         gap: 2rem; /* Add some space between side-content and grid */
+		padding: 0;
 	}
 
 	 .side-content {
-        margin-top: 1rem; /* Add some space at the top */
+        margin-top: 10rem; /* Add some space at the top */
     }
 
 	.video-grid {
