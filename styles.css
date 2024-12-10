@@ -280,10 +280,9 @@ body.menu-open {
 	transform: translateX(-50%);
 	color: white;
 	font-size: 1.5rem;
-	font-weight: 300;
+	font-weight: thin;
 	z-index: 2;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	padding: 8px 20px;
 	letter-spacing: 0.5px;
 	opacity: 0.95;
 	transition: opacity 0.3s ease, transform 0.3s ease;
@@ -303,7 +302,6 @@ body.menu-open {
 	font-weight: thin;
 	z-index: 2;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	padding: 8px 20px;
 	letter-spacing: 0.5px;
 	opacity: 0.95;
 	transition: opacity 0.3s ease, transform 0.3s ease;
@@ -390,6 +388,7 @@ body.menu-open {
 	/* Consider a specific order for mobile layout */
 	.ar-video {
 		order: 1;
+		aspect-ratio: 3/4;
 	}
 
 	.vfx-video {
