@@ -355,7 +355,8 @@ body.menu-open {
 	}
 
 	.video-grid {
-		width: min(950px, 95%); /* Slightly smaller on medium screens */		height: auto;
+		width: min(950px, 95%); /* Slightly smaller on medium screens */		
+		height: auto;
 		aspect-ratio: 1.5 / 1;
 	}
 }
@@ -377,9 +378,7 @@ body.menu-open {
 		flex-direction: column;
 		gap: 20px;
 		aspect-ratio: auto;
-		min-width: unset;
-		
-		/* Remove min-width on mobile */
+		width: 100%;
 	}
 
 	.video-container {
