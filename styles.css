@@ -183,8 +183,8 @@ body.menu-open {
 	/* Create 12 columns with adjusted aspect ratio */
 	grid-template-columns: repeat(10, minmax(0, 1fr));
 	grid-template-rows: repeat(14, minmax(0, 1fr));
-	width: min(1250px, 60%); /* Maximum 1100px, but never wider than container */
-    height: min(900px, 80vh); /* Maximum 750px, but scales with viewport */
+	width: min(1250px, 60%); /* Maximum 1250px, but never wider than container */
+    height: min(900px, 70vh); /* Maximum 900px, but scales with viewport */
     min-width: unset; /* Remove the fixed min-width */
     aspect-ratio: 1.47 / 1; /* Maintain the original proportion (1100/750) */
 	/* or your preferred minimum */
