@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Menu functionality
     const menuButton = document.querySelector('.menu-text');
     const navBrand = document.querySelector('.nav-brand');
     const menuOverlay = document.querySelector('.menu-overlay');
@@ -27,21 +28,143 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     };
     
-    menuButton.addEventListener('click', toggleMenu);
-    navBrand.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleMenu();
-    });
+    if (menuButton && navBrand) {
+        menuButton.addEventListener('click', toggleMenu);
+        navBrand.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMenu();
+        });
+    }
+
+    class TextScramble {
+        constructor(el) {
+            this.el = el;
+            this.chars = '10101!<>-_\\/[]{}—=+*^?#________';
+            this.currentText = el.innerText;
+            this.frameRequest = null;
+        }
+        
+        setText(newText) {
+            // Cancel any ongoing animation
+            if (this.frameRequest) {
+                cancelAnimationFrame(this.frameRequest);
+            }
+            
+            // If the text is already what we want, do nothing
+            if (this.currentText === newText) return Promise.resolve();
+            
+            this.currentText = newText;
+            const length = Math.max(this.el.innerText.length, newText.length);
+            const steps = 8; // Number of scramble steps
+            let step = 0;
+            
+            return new Promise(resolve => {
+                const update = () => {
+                    let output = '';
+                    for (let i = 0; i < length; i++) {
+                        const to = newText[i] || '';
+                        if (step === steps) {
+                            output += to;
+                        } else if (!to) {
+                            output += '';
+                        } else {
+                            output += this.chars[Math.floor(Math.random() * this.chars.length)];
+                        }
+                    }
+                    
+                    this.el.innerText = output;
+                    
+                    if (step < steps) {
+                        step++;
+                        setTimeout(() => {
+                            this.frameRequest = requestAnimationFrame(update);
+                        }, 50); 
+                    } else {
+                        this.frameRequest = null;
+                        resolve();
+                    }
+                };
+                
+                this.frameRequest = requestAnimationFrame(update);
+            });
+        }
+    }
+
+    // Content for different sections
+    const texts = {
+        default: {
+            title: "Hi, I'm Somar",
+            description: "Welcome to my portfolio. I make digital and usually interactive art."
+        },
+        ar: {
+            title: "Augmented Reality",
+            description: "Blending digital and physical worlds through interactive experiences."
+        },
+        vfx: {
+            title: "3D Visual Effects",
+            description: "Crafting compelling visual narratives through CGI"
+        },
+        gamedev: {
+            title: "Game Development",
+            description: "Building immersive interactive experiences and virtual worlds."
+        },
+        design: {
+            title: "Design",
+            description: "Creating visual art through photography and graphic design"
+        }
+    };
+
+    // Initialize scramblers
+    const titleElement = document.querySelector('.side-content h2');
+    const descriptionElement = document.querySelector('.side-content p');
+
+    if (titleElement && descriptionElement) {
+        const titleScrambler = new TextScramble(titleElement);
+        const descriptionScrambler = new TextScramble(descriptionElement);
+
+        // Keep track of current hover state
+        let currentlyHovered = 'default';
+
+        // Function to update text with scramble effect
+        const updateText = (textKey) => {
+            currentlyHovered = textKey;
+            const content = texts[textKey];
+            
+            titleScrambler.setText(content.title);
+            descriptionScrambler.setText(content.description);
+        };
+
+        // Add hover listeners to video containers
+        document.querySelectorAll('.video-container').forEach(container => {
+            const type = container.classList.contains('ar-video') ? 'ar' :
+                        container.classList.contains('vfx-video') ? 'vfx' :
+                        container.classList.contains('games-video') ? 'gamedev' :
+                        container.classList.contains('design-box') ? 'design' : 'default';
+
+            container.addEventListener('mouseenter', () => {
+                updateText(type);
+            });
+
+            container.addEventListener('mouseleave', () => {
+                // Only update to default if we're not hovering over another element
+                if (currentlyHovered === type) {
+                    updateText('default');
+                }
+            });
+        });
+    }
 });
 
-// Add this to your existing script.js
-document.querySelector('.menu-trigger').addEventListener('click', function() {
-    const menuOverlay = document.querySelector('.menu-overlay');
-    const body = document.body;
-    
-    menuOverlay.style.display = 'block';
-    setTimeout(() => {
-        menuOverlay.classList.add('active');
-        body.classList.add('menu-open');
-    }, 10);
-});
+// Menu trigger code
+if (document.querySelector('.menu-trigger')) {
+    document.querySelector('.menu-trigger').addEventListener('click', function() {
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const body = document.body;
+        
+        menuOverlay.style.display = 'block';
+        setTimeout(() => {
+            menuOverlay.classList.add('active');
+            body.classList.add('menu-open');
+        }, 10);
+    });
+}
