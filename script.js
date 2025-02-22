@@ -3,7 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.menu-text');
     const navBrand = document.querySelector('.nav-brand');
     const menuOverlay = document.querySelector('.menu-overlay');
-    
+
+    window.updateMenuButtonText = () => {
+        menuButton.style.opacity = '0';
+        setTimeout(() => {
+            menuButton.textContent = menuButton.textContent === 'Menu' ? 'Close' : 'Menu';
+            menuButton.style.opacity = '1';
+        }, 300);
+    };
+
     const toggleMenu = () => {
         // Start menu animation immediately
         if (menuOverlay.style.display === 'none' || !menuOverlay.style.display) {
@@ -20,14 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         }
 
-        // Handle text change separately
-        menuButton.style.opacity = '0';
-        setTimeout(() => {
-            menuButton.textContent = menuButton.textContent === 'Menu' ? 'Close' : 'Menu';
-            menuButton.style.opacity = '1';
-        }, 300);
+        updateMenuButtonText();
     };
-    
+
     if (menuButton && navBrand) {
         menuButton.addEventListener('click', toggleMenu);
         navBrand.addEventListener('click', (e) => {
@@ -43,21 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
             this.currentText = el.innerText;
             this.frameRequest = null;
         }
-        
+
         setText(newText) {
             // Cancel any ongoing animation
             if (this.frameRequest) {
                 cancelAnimationFrame(this.frameRequest);
             }
-            
+
             // If the text is already what we want, do nothing
             if (this.currentText === newText) return Promise.resolve();
-            
+
             this.currentText = newText;
             const length = Math.max(this.el.innerText.length, newText.length);
             const steps = 8; // Number of scramble steps
             let step = 0;
-            
+
             return new Promise(resolve => {
                 const update = () => {
                     let output = '';
@@ -71,20 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             output += this.chars[Math.floor(Math.random() * this.chars.length)];
                         }
                     }
-                    
+
                     this.el.innerText = output;
-                    
+
                     if (step < steps) {
                         step++;
                         setTimeout(() => {
                             this.frameRequest = requestAnimationFrame(update);
-                        }, 50); 
+                        }, 50);
                     } else {
                         this.frameRequest = null;
                         resolve();
                     }
                 };
-                
+
                 this.frameRequest = requestAnimationFrame(update);
             });
         }
@@ -129,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateText = (textKey) => {
             currentlyHovered = textKey;
             const content = texts[textKey];
-            
+
             titleScrambler.setText(content.title);
             descriptionScrambler.setText(content.description);
         };
@@ -137,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add hover listeners to video containers
         document.querySelectorAll('.video-container').forEach(container => {
             const type = container.classList.contains('ar-video') ? 'ar' :
-                        container.classList.contains('vfx-video') ? 'vfx' :
-                        container.classList.contains('games-video') ? 'gamedev' :
+                container.classList.contains('vfx-video') ? 'vfx' :
+                    container.classList.contains('games-video') ? 'gamedev' :
                         container.classList.contains('design-box') ? 'design' : 'default';
 
             container.addEventListener('mouseenter', () => {
@@ -157,14 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Menu trigger code
 if (document.querySelector('.menu-trigger')) {
-    document.querySelector('.menu-trigger').addEventListener('click', function() {
+    document.querySelector('.menu-trigger').addEventListener('click', function () {
         const menuOverlay = document.querySelector('.menu-overlay');
         const body = document.body;
-        
+
         menuOverlay.style.display = 'block';
         setTimeout(() => {
             menuOverlay.classList.add('active');
             body.classList.add('menu-open');
+            updateMenuButtonText();
         }, 10);
     });
 }
