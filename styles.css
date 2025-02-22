@@ -350,6 +350,27 @@ body.menu-open {
 	z-index: 1;
 }
 
+.footer-note {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.8;
+    z-index: 9; /* Below the menu overlay which likely has a higher z-index */
+
+	line-height: 1.6;
+	font-weight: 300;
+	font-size: 1rem;
+
+}
+
+/* Special handling for when it's in the menu overlay */
+.menu-overlay .footer-note {
+    position: absolute; /* Change to absolute within the overlay */
+    z-index: 1001; /* Ensure it's visible above overlay content */
+}
+
 
 
 /* Responsive Design */
@@ -409,6 +430,19 @@ body.menu-open {
 	.design-box {
 		order: 4;
 	}
+	.footer-note {
+        position: static; /* Remove fixed positioning */
+        transform: none; /* Remove transform */
+        left: auto; /* Remove left positioning */
+        bottom: auto; /* Remove bottom positioning */
+        margin: 2rem auto; /* Add some spacing */
+        width: 90%; /* Maintain width control */
+    }
+	.menu-overlay .footer-note {
+        position: static;
+        margin-top: auto; /* Push to bottom of flex container */
+        padding-bottom: 2rem; /* Add some bottom padding */
+    }
 }
 
 /* #################################################################################################### */
@@ -497,7 +531,7 @@ body.menu-open {
 	margin-bottom: 1rem;
 }
 
-/* Add this to your existing CSS */
+
 .logo.framestore {
     width: 300px; /* Adjust this value to your preferred size */
     mix-blend-mode: multiply;
@@ -545,7 +579,6 @@ body.menu-open {
 }
 
 
-/* Add this to your CSS */
 .project-section:nth-child(even) .content-half:first-child {
 	order: 2;
 }
@@ -846,7 +879,6 @@ div.txt-overlay {
 /* ################################################################################################### */
 /* ###################################################################################################### */
 
-/* Add this to your CSS to establish consistent section spacing */
 
 .vision-statement,
 .analytics-container,
