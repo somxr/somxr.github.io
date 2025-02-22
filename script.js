@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const texts = {
         default: {
             title: "Hi, I'm Somar",
-            description: "Welcome to my portfolio. I make digital and interactive art. Hover over each box for a sneak peak."
+            description: "Welcome to my portfolio. I create digital interactive experiences and 3D visual effects."
         },
         ar: {
             title: "Augmented Reality",
