@@ -94,15 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const texts = {
         default: {
             title: "Hi, I'm Somar",
-            description: "Welcome to my portfolio. I make digital and usually interactive art."
+            description: "Welcome to my portfolio. I make digital and interactive art. Hover over each box for a sneak peak."
         },
         ar: {
             title: "Augmented Reality",
-            description: "Blending digital and physical worlds through interactive experiences."
+            description: "I'm an award winning AR artist, garnering 200+ million impressions on Instagram."
         },
         vfx: {
             title: "3D Visual Effects",
-            description: "Crafting compelling visual narratives through CGI"
+            description: "I supported VFX Artists on blockbusters like Guardians of the Galaxy 3."
         },
         gamedev: {
             title: "Game Development",
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         design: {
             title: "Design",
-            description: "Creating visual art through photography and graphic design"
+            description: "Practicing visual art and game design."
         }
     };
 
