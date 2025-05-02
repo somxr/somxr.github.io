@@ -1,14 +1,16 @@
+/* santo.css file */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   /* --bg: #ff6a00; */
-  --bg: #333;
+  --bg: #F8F8F8 ;
   --white: #feffd1;
   --font-sans: 'Open Sans', sans-serif;
   --font-sans-weight: 400;
-  --font-condensed: "field-gothic-xxcondensed", sans-serif;
+  --font-condensed: system-ui, -apple-system, sans-serif;
   --font-condensed-weight: 900;
-  --font-condensed-md: "field-gothic-xcondensed", sans-serif;
+  --font-condensed-md: system-ui, -apple-system, sans-serif;
   --font-condensed-md-weight: 700;
   --layout-columns-count:12;
   --layout-columns-gap:1em;
@@ -45,6 +47,11 @@ body {
   width:100%;
   /* padding: .5em; */
   margin: 0 auto;
+}
+
+/* todo: give this a media query */
+#content {
+  /* padding-bottom: 125px; Adjust this value as needed */
 }
 
 .code::before {
@@ -199,7 +206,7 @@ body {
   text-transform: uppercase;
   margin-bottom: 0;
 }
-
+/* 
 .btn {
   background-color: var(--white);
   color: var(--bg);
@@ -215,7 +222,7 @@ body {
 .btn:hover {
   background-color: var(--bg);
   color: var(--white);
-}
+} */
 
 .article-right {
   grid-column: 5 / -1;
@@ -251,7 +258,7 @@ body {
 }
 
 .poster1 {
-  background: url(../images/poster-associates2.jpg) no-repeat fixed center top;
+  background: url(../images/blank_screen07.png) no-repeat fixed right top;
   background-size: cover;
 }
 
@@ -264,7 +271,7 @@ body {
   grid-column: 1 / 8;
   height: 100vh;
   position: sticky;
-
+  /* top: 0; */
 }
 
 .case-description {
@@ -320,6 +327,7 @@ body {
 } */
 
 
+
 /* =====================
    ==== MEDIA QUERIES == */
 
@@ -361,3 +369,4 @@ body {
       font-size: 15vmax;
     }
   }
+
