@@ -82,10 +82,10 @@ ScrollTrigger.create({
 });
 
 ScrollTrigger.create({
-  trigger: "#poster1",
+  trigger: "#BTSR",
   start: "top top", 
   end: "bottom bottom",
-  pin: "#poster1-side"
+  pin: "#BTSR-side"
 });
 
 ScrollTrigger.create({

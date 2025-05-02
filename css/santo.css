@@ -257,7 +257,7 @@ body {
   background-size: cover;
 }
 
-.poster1 {
+.BTSR {
   background: url(../images/blank_screen07.png) no-repeat fixed right top;
   background-size: cover;
 }
@@ -325,6 +325,40 @@ body {
   align-items: center;
   justify-content: center;
 } */
+
+
+/* ############################################################################### */
+
+/* MY CUSTOM ADDITIONS */
+
+/* Youtube embed classes */
+/* YouTube Responsive Embed */
+.youtube-embed-container {
+  width: 100%;
+  min-width: 250px;
+  max-width: 800px;
+  margin: 0 0 1em; /* Same margin as your .fit class */
+}
+
+.youtube-embed-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.youtube-embed-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* ############################################################################################## */
 
 
 
