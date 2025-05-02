@@ -5,7 +5,7 @@
 :root {
   /* --bg: #ff6a00; */
   --bg: #F8F8F8 ;
-  --white: #feffd1;
+  --black-accent: #333;
   --font-sans: 'Open Sans', sans-serif;
   --font-sans-weight: 400;
   --font-condensed: system-ui, -apple-system, sans-serif;
@@ -35,7 +35,7 @@
 
 body {
   /* background-color: var(--bg); */
-  /* color: var(--white); */
+  /* color: var(--black-accent); */
   font: var(--step-4)/1.5 var(--font-sans);
   font-weight: 400;
   font-style: normal;
@@ -117,7 +117,7 @@ body {
 .fw-lrg {
   font-family: "field-gothic-xxcondensed", sans-serif;
   font-weight: 900;
-  color: var(--white);
+  color: var(--black-accent);
   /* position: relative;
     top:2rem;
     text-shadow:0 2rem 1rem rgba(0, 0, 0, .45); */
@@ -182,7 +182,7 @@ body {
 .aside-header-left {
   width:100%;
   grid-column: 1 / 5;
-  border-bottom: solid 0.1em var(--white);
+  border-bottom: solid 0.1em var(--black-accent);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -208,9 +208,9 @@ body {
 }
 /* 
 .btn {
-  background-color: var(--white);
+  background-color: var(--black-accent);
   color: var(--bg);
-  border: solid var(--white) 0.1em;
+  border: solid var(--black-accent) 0.1em;
   padding: .5em;
   border-radius: .8em;
   text-decoration: none;
@@ -221,12 +221,12 @@ body {
 
 .btn:hover {
   background-color: var(--bg);
-  color: var(--white);
+  color: var(--black-accent);
 } */
 
 .article-right {
   grid-column: 5 / -1;
-  border-bottom: solid 0.1em var(--white);
+  border-bottom: solid 0.1em var(--black-accent);
 }
 
 .description {
@@ -280,7 +280,7 @@ body {
   background: var(--bg);
   align-self: start;
   margin-bottom: 0;
-  border-top: solid var(--white) 1px;
+  border-top: solid var(--black-accent) 1px;
 }
 
 .case-description p {
