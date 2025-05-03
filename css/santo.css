@@ -258,8 +258,20 @@ body {
 }
 
 .btsr {
-  background: url(../images/FLAME02.gif) no-repeat fixed right top;
-  background-size: cover;
+  /* background: url(../images/FLAME02.webm) no-repeat fixed right top; */
+  /* background-size: cover; */
+  position: relative; /* Create positioning context for absolute video */
+}
+
+.background-video {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Similar to background-size: cover */
+  object-position: right top; /* This shows the right side of the video */
+  z-index: -1; /* Places video behind other content */
 }
 
 .poster2 {
