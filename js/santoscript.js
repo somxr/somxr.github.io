@@ -68,10 +68,10 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 
 ScrollTrigger.create({
-  trigger: "#nbgn",
+  trigger: "#spirit-tales",
   start: "top top", 
   end: "bottom bottom",
-  pin: "#nbgn-side"
+  pin: "#spirit-tales-side"
 });
 
 ScrollTrigger.create({
@@ -82,10 +82,10 @@ ScrollTrigger.create({
 });
 
 ScrollTrigger.create({
-  trigger: "#BTSR",
+  trigger: "#btsr",
   start: "top top", 
   end: "bottom bottom",
-  pin: "#BTSR-side"
+  pin: "#btsr-side"
 });
 
 ScrollTrigger.create({

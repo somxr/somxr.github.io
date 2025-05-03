@@ -252,13 +252,13 @@ body {
   background-size: cover;
 }
 
-.nbgn {
-  background: url(../images/nbgn1.jpg) no-repeat fixed center center;
+.spirit-tales {
+  background: url(../assets/DSF7232.jpg) no-repeat fixed center center;
   background-size: cover;
 }
 
-.BTSR {
-  background: url(../images/blank_screen07.png) no-repeat fixed right top;
+.btsr {
+  background: url(../images/FLAME02.gif) no-repeat fixed right top;
   background-size: cover;
 }
 
@@ -357,6 +357,17 @@ body {
   border: none;
 }
 
+/* Default: hide image on desktop/larger screens */
+.show-on-mobile {
+  display: none;
+}
+
+/* Show the image on mobile screens */
+@media only screen and (max-width: 768px) {
+  .show-on-mobile {
+    display: block;
+  }
+}
 
 /* ############################################################################################## */
 
