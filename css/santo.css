@@ -9,9 +9,9 @@
   --font-sans: 'Open Sans', sans-serif;
   --font-sans-weight: 400;
   --font-condensed: system-ui, -apple-system, sans-serif;
-  --font-condensed-weight: 900;
+  --font-condensed-weight: 800;
   --font-condensed-md: system-ui, -apple-system, sans-serif;
-  --font-condensed-md-weight: 700;
+  --font-condensed-md-weight: 600;
   --layout-columns-count:12;
   --layout-columns-gap:1em;
 }
@@ -35,7 +35,7 @@
 
 body {
   /* background-color: var(--bg); */
-  /* color: var(--black-accent); */
+  color: var(--black-accent);
   font: var(--step-4)/1.5 var(--font-sans);
   font-weight: 400;
   font-style: normal;
@@ -50,9 +50,9 @@ body {
 }
 
 /* todo: give this a media query */
-#content {
-  /* padding-bottom: 125px; Adjust this value as needed */
-}
+/* #content {
+  padding-bottom: 125px; Adjust this value as needed
+} */
 
 .code::before {
   content: "< ";
@@ -99,6 +99,7 @@ body {
   font-family: var(--font-condensed);
   /* font-size: 14em; */
   font-size: 34vmax;
+    /* font-size: clamp(3rem, 8vw, 10rem); */
   line-height: 65%;
   font-weight: var(--font-condensed-weight);
   letter-spacing: -.01rem;
@@ -115,7 +116,7 @@ body {
 }
 
 .fw-lrg {
-  font-family: "field-gothic-xxcondensed", sans-serif;
+  /* font-family: "field-gothic-xxcondensed", sans-serif; */
   font-weight: 900;
   color: var(--black-accent);
   /* position: relative;
@@ -247,8 +248,8 @@ body {
 }  
 
 
-.bcr-event {
-  background: url(../images/bcr-event1.png) no-repeat fixed center center;
+.reciprocity-failure {
+  background: url(../assets/RF_white_upscaled.jpg) no-repeat fixed center center;
   background-size: cover;
 }
 
@@ -312,6 +313,14 @@ body {
   margin: 0 0 1em;
 }
 
+video.fit {
+  width: 100%;
+  margin: 0 0 1em;
+  max-height: 90vh;
+  object-fit: contain; /* or cover depending on your preference */
+  object-position: left top; /* Force left alignment */
+  display: block; /* Ensures block-level behavior */
+}
 
 
 /* .staggered {
@@ -378,6 +387,29 @@ body {
 @media only screen and (max-width: 768px) {
   .show-on-mobile {
     display: block;
+  }
+}
+
+
+/* New section Headings */
+.section-header {
+  margin-bottom: 2rem;
+}
+
+.responsive-heading {
+  font-family: var(--font-condensed);
+  font-size: clamp(3rem, 12vw, 12rem);
+  line-height: 0.9;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--black-accent);
+}
+
+/* Optional media query for further refinement if needed */
+@media (max-width: 768px) {
+  .responsive-heading {
+    font-size: clamp(2.5rem, 15vw, 8rem);
   }
 }
 

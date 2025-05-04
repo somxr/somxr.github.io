@@ -75,10 +75,10 @@ ScrollTrigger.create({
 });
 
 ScrollTrigger.create({
-  trigger: "#bcr",
+  trigger: "#reciprocity-failure",
   start: "top top", 
   end: "bottom bottom",
-  pin: "#bcr-side"
+  pin: "#reciprocity-failure-side"
 });
 
 ScrollTrigger.create({
