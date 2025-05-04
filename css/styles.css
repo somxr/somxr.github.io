@@ -805,7 +805,19 @@ div.txt-overlay {
 	/* letter-spacing: -0.01em; */
 }
 
+@media only screen and (max-width: 821px) {
+	
+    .hero-text {
+		font-family: var(--font-condensed-md);
+		font-weight: 500;
+		font-size: 1em;
+		margin-bottom: .2em;
+	  }
 
+	 .margin-top-extra {
+		margin-top: 1.5em;
+	 } 
+}
 
 @media (max-width: 480px) {
     .vision-statement {
