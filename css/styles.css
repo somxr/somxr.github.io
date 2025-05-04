@@ -795,15 +795,23 @@ div.txt-overlay {
 }
 
 
+.hero-text {
+	font-family: var(--font-condensed-md);
+	font-weight: var(--font-condensed-md-weight);
+	line-height: 100%;
+	font-size: 5vw;
+	margin: 0 0 .5em;
+	/* text-transform: uppercase; */
+	/* letter-spacing: -0.01em; */
+}
+
+
 
 @media (max-width: 480px) {
     .vision-statement {
         padding: 4rem 1.5rem;
     }
 }
-
-
-
 
 
 
@@ -856,7 +864,7 @@ div.txt-overlay {
     margin: 0rem 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 2rem;  /* Space between heading and image */
 }
 

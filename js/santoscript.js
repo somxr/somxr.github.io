@@ -89,10 +89,10 @@ ScrollTrigger.create({
 });
 
 ScrollTrigger.create({
-  trigger: "#poster2",
+  trigger: "#no-tears",
   start: "top top", 
   end: "bottom bottom",
-  pin: "#poster2-side"
+  pin: "#no-tears-side"
 });
 
 

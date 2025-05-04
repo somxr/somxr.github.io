@@ -275,8 +275,8 @@ body {
   z-index: -1; /* Places video behind other content */
 }
 
-.poster2 {
-  background: url(../images/poster2.png) no-repeat fixed center top;
+.no-tears {
+  background: url(../assets/no_tears_logo_upscaled.png) no-repeat fixed center top;
   background-size: cover;
 }
 
