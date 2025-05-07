@@ -805,6 +805,10 @@ div.txt-overlay {
 	/* letter-spacing: -0.01em; */
 }
 
+.margin-top-extra {
+	margin-top: .5em;
+ } 
+
 @media only screen and (max-width: 821px) {
 	
     .hero-text {
@@ -826,18 +830,17 @@ div.txt-overlay {
 }
 
 
-
-
 /* ###############################################################################################
 ############################################################################################### */
 
 .filter-grid-wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px;
+    grid-gap: 0.4em;
+    /* padding: 20px; */
     max-width: 1600px;
-    margin: 8rem auto;  /* Vertical spacing with horizontal auto */
+	/* Vertical spacing with horizontal auto */
+    /* margin: 8rem 0rem;   */
 }
 .filter-grid-item {
 	position: relative;

@@ -404,6 +404,7 @@ video.fit {
   text-transform: uppercase;
   margin: 0;
   color: var(--black-accent);
+  margin-left: -6px;
 }
 
 /* Optional media query for further refinement if needed */
