@@ -95,6 +95,19 @@ ScrollTrigger.create({
   pin: "#no-tears-side"
 });
 
+ScrollTrigger.create({
+  trigger: "#nothing-holy",
+  start: "top top", 
+  end: "bottom bottom",
+  pin: "#nothing-holy-side"
+});
+
+ScrollTrigger.create({
+  trigger: "#palm-presence",
+  start: "top top", 
+  end: "bottom bottom",
+  pin: "#palm-presence-side"
+});
 
 // splitter testing
 // let tl = gsap.timeline();

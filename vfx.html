@@ -25,12 +25,16 @@
         <section id="content">
 
             <section class="content margins-no-b">
-                <h1 class="hero-text margin-top-extra">I provided technical support for artists at Framestore, an Academy Award winning
-                    visual effects house. I worked on movies such as:
+                <h1 class="hero-text margin-top-extra">I provided technical support for artists at Framestore, an
+                    Academy Award winning
+                    visual effects house.
                 </h1>
             </section>
-
-
+            <section class="content margins">
+                <div class="section-header">
+                    <h1 class="responsive-heading">Industry Projects</h1>
+                </div>
+            </section>
             <div class="container">
                 <section class="project-section">
                     <div class="content-half">
@@ -41,7 +45,9 @@
                             <p class="project-description">
                                 As an Assistant Technical Director, I developed Python tools for digital art software
                                 like Maya and Nuke to
-                                improve VFX artists’ workflows.
+                                improve VFX artists’ workflows. For example, on <em>Guardians of the Galaxy vol. 3</em>
+                                I created a camera tool that lets Maya artists adjust camera distances while maintaining
+                                perspective and character framing in the shot.
                             </p>
                         </div>
                     </div>
@@ -61,7 +67,8 @@
                             <h4 class="project-tech">Universal Pictures, 2024</h4>
                             <p class="project-description">
                                 I also troubleshot 3D software, pipeline, and rendering issues, working with animators
-                                and reporting to the Head of Computer Graphics.
+                                and reporting to the Head of Computer Graphics. I made sure render errors were fixed and
+                                scene files recieved from partner companies matched Framestore's pipeline requirements.
                             </p>
                         </div>
                     </div>
@@ -74,23 +81,94 @@
                 </section>
             </div>
 
-            <section class="vision-statement">
-                <h1 class="vision-text">I left Framestore to hone my artistic skills. As a Computation Arts student, I'm
-                    creating my own 3D animation and imagery
-                </h1>
-            </section>
-
-            <section class="sugar-rush-section">
-                <div class="sugar-rush-wrapper">
-                    <div class="sugar-rush-content">
-                        <h2>Sugar Rush</h2>
-                        <p>Animation loop by me, exploring themes of addiction</p>
-                    </div>
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/sugar_rush01.mp4" type="video/mp4">
-                    </video>
+            <section class="content margins">
+                <div class="section-header">
+                    <h1 class="responsive-heading">Personal Projects</h1>
                 </div>
             </section>
+
+            <section id="nothing-holy" class=" content h-lg grid-12 case-study">
+                <aside id="nothing-holy-side" class="showcase nothing-holy"></aside>
+                <article class="case-description">
+                    <div class="anim-wrap">
+                        <h3 class="title-sm trigger">Nothing Holy</h3>
+                    </div>
+                    <p>
+                        <em>Nothin Holy</em> is a digital artwork that examines the intersection of colonial violence
+                        and
+                        cultural
+                        appropriation through the metaphor of decapitated Buddha statues in Western museums. The piece
+                        features a headless Buddha figure in a meditation pose, with a black void replacing the head and
+                        fragmented pieces floating in space. This visual representation critiques both the physical
+                        dismemberment of sacred artifacts through looting and the conceptual fragmentation that occurs
+                        when spiritual practices like mindfulness are stripped of their cultural context.
+                    </p>
+                    <p>Created in collaboration with a Kashmiri musician, this interdisciplinary project challenges
+                        artificial borders while creating dialogue across cultural differences.
+                    </p>
+                    <h4 class="title-sm-sub">Tools</h4>
+                    <p>Blender</p>
+
+                    <h4 class="title-sm-sub">Category</h4>
+                    <p>3D Design</p>
+                    <img src="images/nothing_holy_render.png" alt="Nothing Holy render" class="fit">
+
+                    <p>This project was an opportunity for me to hone my procedural 3D skills. Outside the stone
+                        sculpture model, everything is procedurally generated using Blender's visual shading and
+                        geometry
+                        nodes. The water, sky, black hole, and randomly scattered artifacts are all procedural.</p>
+                    <p>Sitting Buddha clothing 3D model created by <a
+                            href="https://www.cgtrader.com/designers/hyuwai89">Htun Htun Win</a>.</p>
+
+
+                    <!-- <h4 class="title-sm-sub">category</h4>
+                    <p>Graphic Design</p> -->
+
+
+                    <img src="images/nothing-holy-wireframe.png" alt="nothing holy wireframe" class="fit">
+                    <video class="fit" style="max-height: 70vh;" src="images/blackhole_breakdown.mp4" autoplay loop
+                        muted playsinline></video>
+                </article>
+            </section>
+
+            <section id="palm-presence" class=" content h-lg grid-12 case-study">
+                <aside id="palm-presence-side" class="showcase palm-presence"></aside>
+                <article class="case-description">
+                    <div class="anim-wrap">
+                        <h3 class="title-sm trigger">Palm presence</h3>
+                    </div>
+                    <p>
+                        For this project, I created a "digital mirage" that invites viewers to
+                        reconsider their relationship with illusion, perception, and emotional experience. Traditional
+                        mirages are observed from a distance, tantalizingly unreachable. I deliberately transgress this
+                        expectation by placing the viewer directly within the mirage.
+                    </p>
+                    <p>My vision for this work is to provide a meditation on the nature of joy and desire. The oasis
+                        represents our dreams and aspirations, the things we chase across metaphorical deserts of
+                        everyday life. I aimed to harness the power of CGI to create impossible
+                        characters of palm trees that bend and spiral, exaggerating the mirage. I used rigging to move
+                        the tree trunks, and cloth simulations for the leaves to get cartoony yet believable
+                        movements.
+                    </p>
+                    <h4 class="title-sm-sub">Tools</h4>
+                    <p>Blender</p>
+
+                    <h4 class="title-sm-sub">Category</h4>
+                    <p>3D Animation</p>
+                    <video class="fit" style="max-height: 90vh;" src="images/palm_presence.mp4" autoplay loop muted
+                        playsinline></video>
+
+
+
+                    <!-- <h4 class="title-sm-sub">category</h4>
+                    <p>Graphic Design</p> -->
+
+
+                    <img src="images/oasis_overview.png" alt="nothing holy wireframe" class="fit">
+                </article>
+            </section>
+
+
 
             <section class="end-navigation">
                 <button class="end-nav-btn menu-trigger">
@@ -130,25 +208,28 @@
                         </div>
                     </a>
 
-                    <!-- VFX Video -->
-                    <a href="/vfx.html" class="video-link">
-                        <div class="video-container vfx-video top-text">
-                            <div class="video-title-top">3D Visual Effects</div>
-                            <video src="assets/sugar_rush01.mp4" autoplay muted loop playsinline class="video-element"
+                    <!-- Game Dev Video -->
+                    <a href="/game-dev.html" class="video-link">
+                        <div class="video-container games-video bottom-text">
+                            <div class="video-title-bottom">Game Development</div>
+                            <video src="images/FLAME02.webm" autoplay muted loop playsinline class="video-element"
                                 preload="auto">
                             </video>
                         </div>
                     </a>
 
-                    <!-- Game Dev Video -->
-                    <a href="/game-dev.html" class="video-link">
-                        <div class="video-container games-video bottom-text">
-                            <div class="video-title-bottom">Game Dev</div>
-                            <video src="assets/VexField-vid.mp4" autoplay muted loop playsinline class="video-element"
+                    <!-- VFX Video -->
+                    <a href="/vfx.html" class="video-link">
+                        <div class="video-container vfx-video top-text">
+                            <div class="video-title-top">3D Visual Effects</div>
+                            <!-- <video src="assets/sugar_rush01.mp4" autoplay muted loop playsinline class="video-element"
                                 preload="auto">
-                            </video>
+                            </video> -->
+                            <img src="images/nothing_holy_render.png" alt="">
                         </div>
                     </a>
+
+
 
                     <!-- Design Video -->
                     <a href="/design.html" class="video-link">

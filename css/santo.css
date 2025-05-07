@@ -258,6 +258,16 @@ body {
   background-size: cover;
 }
 
+.nothing-holy {
+  background: url(../images/nothing_holy_render.png) no-repeat fixed center center;
+  background-size: cover;
+}
+
+.palm-presence {
+  background: url(../images/palms_bts.png) no-repeat fixed left center;
+  background-size: cover;
+}
+
 .btsr {
   /* background: url(../images/FLAME02.webm) no-repeat fixed right top; */
   /* background-size: cover; */
@@ -411,7 +421,9 @@ video.fit {
 @media (max-width: 768px) {
   .responsive-heading {
     font-size: clamp(2.5rem, 15vw, 8rem);
+    margin-left: 0px;
   }
+
 }
 
 /* ############################################################################################## */

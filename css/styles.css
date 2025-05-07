@@ -241,14 +241,14 @@ body.menu-open {
 	/* Takes all 12 rows */
 }
 
-.vfx-video {
+.games-video {
 	grid-column: 5 / span 6;
 	/* Takes remaining 6 columns */
 	grid-row: 1 / span 7;
 	/* Takes top 6 rows */
 }
 
-.games-video {
+.vfx-video {
 	grid-column: 5 / span 4;
 	/* Takes 4 columns */
 	grid-row: 8 / span 7;
@@ -421,11 +421,11 @@ body.menu-open {
 		aspect-ratio: 3/4;
 	}
 
-	.vfx-video {
+	.games-video {
 		order: 2;
 	}
 
-	.games-video {
+	.vfx-video {
 		order: 3;
 	}
 
@@ -463,7 +463,9 @@ body.menu-open {
 .project-section {
 	display: flex;
 	align-items: center;
-	margin: 4rem 0;
+	margin: 0rem 0rem;
+	margin-top: 0em;
+	margin-bottom: 0em;
 	/* gap: 2rem; */
 }
 
@@ -523,8 +525,8 @@ body.menu-open {
 	/* Or your preferred width */
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	text-align: center;
+	align-items: left;
+	text-align: left;
 }
 
 .logo {
@@ -538,6 +540,7 @@ body.menu-open {
     width: 300px; /* Adjust this value to your preferred size */
     mix-blend-mode: multiply;
     filter: invert(1); /* This inverts black to white and vice versa */
+	margin-left: -28px;
 }
 
 .logo.facemeshgl {
@@ -546,23 +549,27 @@ body.menu-open {
 }
 
 .project-title {
-	font-size: 2.5rem;
+	font-size: 3.5rem;
 	font-weight: 500;
 	margin-bottom: 0.5rem;
+	text-align: left;
 }
 
 .project-tech {
-	font-size: 1.5rem;
+	font-size: 2.5rem;
 	font-weight: 300;
 	margin-bottom: 1rem;
+	text-align: left;
 }
 
 .project-description {
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 	font-weight: 300;
 	margin-bottom: 2rem;
 	width:100%;
 	max-width: 700px;
+
+	text-align: left;
 }
 
 .btn {
@@ -916,8 +923,7 @@ div.txt-overlay {
 
 
 .vision-statement,
-.analytics-container,
-.project-section {
+.analytics-container {
     margin-top: 8rem;
     margin-bottom: 8rem;
 }
