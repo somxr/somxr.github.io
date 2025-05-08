@@ -109,11 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         gamedev: {
             title: "Game Development",
-            description: "Building immersive interactive experiences and virtual worlds."
+            description: "I love creating playful interactive experiences."
         },
         design: {
-            title: "Design",
-            description: "Practicing visual art and game design."
+            title: "About Me",
+            description: "???"
         }
     };
 
