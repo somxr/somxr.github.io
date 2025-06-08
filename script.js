@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.menu-text');
     const navBrand = document.querySelector('.nav-brand');
     const menuOverlay = document.querySelector('.menu-overlay');
+    const menuTrigger = document.querySelector('.menu-trigger'); // Add this line
     let isMenuOpen = false;
     let peekTimeout;
 
@@ -60,6 +61,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuButton.addEventListener('click', toggleMenu);
     }
+    // Add this after the menuButton hover listeners, around line 63
+if (menuTrigger) {
+    // Add peek on hover for menu trigger
+    menuTrigger.addEventListener('mouseenter', () => {
+        if (!isMenuOpen) {
+            clearTimeout(peekTimeout);
+            menuOverlay.style.display = 'block';
+            requestAnimationFrame(() => {
+                menuOverlay.classList.add('peeking');
+            });
+        }
+    });
+
+    menuTrigger.addEventListener('mouseleave', () => {
+        if (!isMenuOpen && menuOverlay.classList.contains('peeking')) {
+            menuOverlay.classList.remove('peeking');
+            peekTimeout = setTimeout(() => {
+                if (!isMenuOpen) {
+                    menuOverlay.style.display = 'none';
+                }
+            }, 500);
+        }
+    });
+
+    menuTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
+}
+
 
     if (navBrand) {
         navBrand.addEventListener('click', (e) => {
@@ -68,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Rest of your code (TextScramble class, etc.)...
     class TextScramble {
         constructor(el) {
             this.el = el;
@@ -186,6 +218,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// Menu trigger code - removed since we're using the main menu button now
-// This was for a separate trigger which we don't need anymore
