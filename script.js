@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.menu-text');
     const navBrand = document.querySelector('.nav-brand');
     const menuOverlay = document.querySelector('.menu-overlay');
+    let isMenuOpen = false;
+    let peekTimeout;
 
     window.updateMenuButtonText = () => {
         menuButton.style.opacity = '0';
@@ -13,26 +15,53 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const toggleMenu = () => {
-        // Start menu animation immediately
-        if (menuOverlay.style.display === 'none' || !menuOverlay.style.display) {
+        if (!isMenuOpen) {
             menuOverlay.style.display = 'block';
-            document.body.classList.add('menu-open'); // Add class when opening
+            menuOverlay.classList.remove('peeking'); // Remove peek class
+            document.body.classList.add('menu-open');
             requestAnimationFrame(() => {
                 menuOverlay.classList.add('active');
             });
+            isMenuOpen = true;
         } else {
             menuOverlay.classList.remove('active');
-            document.body.classList.remove('menu-open'); // Remove class when closing
+            menuOverlay.classList.remove('peeking');
+            document.body.classList.remove('menu-open');
             setTimeout(() => {
                 menuOverlay.style.display = 'none';
             }, 500);
+            isMenuOpen = false;
         }
-
         updateMenuButtonText();
     };
 
-    if (menuButton && navBrand) {
+    // Add peek effect on hover
+    if (menuButton) {
+        menuButton.addEventListener('mouseenter', () => {
+            if (!isMenuOpen) {
+                clearTimeout(peekTimeout);
+                menuOverlay.style.display = 'block';
+                requestAnimationFrame(() => {
+                    menuOverlay.classList.add('peeking');
+                });
+            }
+        });
+
+        menuButton.addEventListener('mouseleave', () => {
+            if (!isMenuOpen && menuOverlay.classList.contains('peeking')) {
+                menuOverlay.classList.remove('peeking');
+                peekTimeout = setTimeout(() => {
+                    if (!isMenuOpen) {
+                        menuOverlay.style.display = 'none';
+                    }
+                }, 500);
+            }
+        });
+
         menuButton.addEventListener('click', toggleMenu);
+    }
+
+    if (navBrand) {
         navBrand.addEventListener('click', (e) => {
             e.preventDefault();
             toggleMenu();
@@ -158,17 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Menu trigger code
-if (document.querySelector('.menu-trigger')) {
-    document.querySelector('.menu-trigger').addEventListener('click', function () {
-        const menuOverlay = document.querySelector('.menu-overlay');
-        const body = document.body;
-
-        menuOverlay.style.display = 'block';
-        setTimeout(() => {
-            menuOverlay.classList.add('active');
-            body.classList.add('menu-open');
-            updateMenuButtonText();
-        }, 10);
-    });
-}
+// Menu trigger code - removed since we're using the main menu button now
+// This was for a separate trigger which we don't need anymore

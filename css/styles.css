@@ -68,15 +68,37 @@ body {
     height: 100vh;
     background-color: #F8F8F8;
     transform: translateY(-100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother easing */
     z-index: 999;
-    /* Default to no scroll for desktop/tablet */
     overflow: hidden;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Peek state - shows just bottom 15% of menu */
+.menu-overlay.peeking {
+    transform: translateY(-80%);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
 .menu-overlay.active {
     transform: translateY(0);
 }
 
+/* Optional: Add a visual cue during peek */
+.peek-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1.25rem;
+    color: #666;
+}
+
+.menu-overlay.peeking .peek-indicator {
+    opacity: 1;
+}
 .menu-content {
     padding: 2rem;
     /* Remove overflow-y and height since parent handles scrolling */
@@ -135,6 +157,24 @@ body {
     padding-bottom: 0.3rem;
 }
 
+/* Hide footer-note by default and during peek */
+.menu-overlay .footer-note {
+    position: absolute;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s; /* Delay the fade in */
+}
+
+/* Only show footer-note when menu is fully active */
+.menu-overlay.active .footer-note {
+    opacity: 0.8;
+}
+
+/* Make sure it stays hidden during peek */
+.menu-overlay.peeking .footer-note {
+    opacity: 0;
+    transition: none; /* No transition during peek */
+}
 
 @media (max-width: 768px) {
     .menu-overlay {
