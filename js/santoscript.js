@@ -109,6 +109,13 @@ ScrollTrigger.create({
   pin: "#palm-presence-side"
 });
 
+ScrollTrigger.create({
+  trigger: "#mono-no-aware",
+  start: "top top", 
+  end: "bottom bottom",
+  pin: "#mono-no-aware-side"
+});
+
 // splitter testing
 // let tl = gsap.timeline();
 // let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });

@@ -274,6 +274,13 @@ body {
   position: relative; /* Create positioning context for absolute video */
 }
 
+.mono-no-aware {
+  background: url(../images/mono-no-aware.png) no-repeat fixed center center;
+  background-size: cover;
+}
+
+
+
 .background-video {
   position: absolute;
   right: 0;
