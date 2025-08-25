@@ -395,6 +395,16 @@ video.fit {
   border: none;
 }
 
+.youtube-embed-iframe-vertical {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* width: 100%; */
+  height: 100%;
+  border: none;
+}
+
 /* Default: hide image on desktop/larger screens */
 .show-on-mobile {
   display: none;
