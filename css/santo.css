@@ -321,6 +321,10 @@ body {
   margin-bottom: 0;
 }
 
+.case-description .img-no-space:last-child {
+  margin-bottom: 0;
+}
+
 .btn-show {
   margin-top: 2em;
 }
@@ -417,6 +421,13 @@ video.fit {
   width: 100%;
   overflow: hidden;
   padding-top: 177.78%; /* 9:16 Aspect Ratio for vertical videos */
+}
+
+/* Fix for images with baseline spacing issues */
+.img-no-space {
+  width: 100%;
+  margin: 0 0 1em;
+  display: block; /* Removes inline baseline space */
 }
 
 /* Default: hide image on desktop/larger screens */
