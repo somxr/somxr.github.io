@@ -36,9 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
         updateMenuButtonText();
     };
 
-    // Add peek effect on hover
+    // Add peek effect on hover (desktop only)
     if (menuButton) {
-        menuButton.addEventListener('mouseenter', () => {
+        // Check if device supports hover (desktop)
+        if (window.matchMedia('(hover: hover)').matches) {
+            menuButton.addEventListener('mouseenter', () => {
+                if (!isMenuOpen) {
+                    clearTimeout(peekTimeout);
+                    menuOverlay.style.display = 'block';
+                    requestAnimationFrame(() => {
+                        menuOverlay.classList.add('peeking');
+                    });
+                }
+            });
+
+            menuButton.addEventListener('mouseleave', () => {
+                if (!isMenuOpen && menuOverlay.classList.contains('peeking')) {
+                    menuOverlay.classList.remove('peeking');
+                    peekTimeout = setTimeout(() => {
+                        if (!isMenuOpen) {
+                            menuOverlay.style.display = 'none';
+                        }
+                    }, 500);
+                }
+            });
+        }
+
+        menuButton.addEventListener('click', toggleMenu);
+    }
+    // Add this after the menuButton hover listeners, around line 63
+if (menuTrigger) {
+    // Add peek on hover for menu trigger (desktop only)
+    if (window.matchMedia('(hover: hover)').matches) {
+        menuTrigger.addEventListener('mouseenter', () => {
             if (!isMenuOpen) {
                 clearTimeout(peekTimeout);
                 menuOverlay.style.display = 'block';
@@ -48,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        menuButton.addEventListener('mouseleave', () => {
+        menuTrigger.addEventListener('mouseleave', () => {
             if (!isMenuOpen && menuOverlay.classList.contains('peeking')) {
                 menuOverlay.classList.remove('peeking');
                 peekTimeout = setTimeout(() => {
@@ -58,32 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 500);
             }
         });
-
-        menuButton.addEventListener('click', toggleMenu);
     }
-    // Add this after the menuButton hover listeners, around line 63
-if (menuTrigger) {
-    // Add peek on hover for menu trigger
-    menuTrigger.addEventListener('mouseenter', () => {
-        if (!isMenuOpen) {
-            clearTimeout(peekTimeout);
-            menuOverlay.style.display = 'block';
-            requestAnimationFrame(() => {
-                menuOverlay.classList.add('peeking');
-            });
-        }
-    });
-
-    menuTrigger.addEventListener('mouseleave', () => {
-        if (!isMenuOpen && menuOverlay.classList.contains('peeking')) {
-            menuOverlay.classList.remove('peeking');
-            peekTimeout = setTimeout(() => {
-                if (!isMenuOpen) {
-                    menuOverlay.style.display = 'none';
-                }
-            }, 500);
-        }
-    });
 
     menuTrigger.addEventListener('click', (e) => {
         e.preventDefault();
