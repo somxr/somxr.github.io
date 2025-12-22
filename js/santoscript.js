@@ -116,6 +116,13 @@ ScrollTrigger.create({
   pin: "#mono-no-aware-side"
 });
 
+ScrollTrigger.create({
+  trigger: "#machine-church",
+  start: "top top", 
+  end: "bottom bottom",
+  pin: "#machine-church-side"
+});
+
 // splitter testing
 // let tl = gsap.timeline();
 // let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });

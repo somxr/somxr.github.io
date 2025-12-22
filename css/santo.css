@@ -279,6 +279,12 @@ body {
   background-size: cover;
 }
 
+.machine-church {
+  background: url(../images/machine_church_cover.jpeg) no-repeat fixed center center;
+  background-size: contain;
+  background-color: black;
+}
+
 
 
 .background-video {
