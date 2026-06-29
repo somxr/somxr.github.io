@@ -285,6 +285,11 @@ body {
   background-color: black;
 }
 
+.ringo {
+  background: url(../images/ringo_cover.jpg) no-repeat fixed left center;
+  background-size: cover;
+}
+
 
 
 .background-video {

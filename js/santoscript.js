@@ -123,6 +123,13 @@ ScrollTrigger.create({
   pin: "#machine-church-side"
 });
 
+ScrollTrigger.create({
+  trigger: "#ringo",
+  start: "top top", 
+  end: "bottom bottom",
+  pin: "#ringo-side"
+});
+
 // splitter testing
 // let tl = gsap.timeline();
 // let mySplitText = new SplitText("#split-stagger", { type: "words,chars" });
