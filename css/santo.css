@@ -200,6 +200,17 @@ body {
   /* letter-spacing: -0.01em; */
 }
 
+/* Keep long single-word headings (e.g. PHILOSOPHY) inside their column on wide screens */
+.aside-header-left {
+  container-type: inline-size;
+}
+
+@media only screen and (min-width: 822px) {
+  .aside-header-left .title-sm {
+    font-size: min(5vw, 14cqi);
+  }
+}
+
 .title-sm-sub {
   font-family: var(--font-condensed-md);
   font-weight: 600;
