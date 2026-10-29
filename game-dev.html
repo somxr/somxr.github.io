@@ -77,6 +77,84 @@
 
                     <h4 class="title-sm-sub">Team Members</h4>
                     <p>Natasha Spinelli: Design and 3D modelling of the cross centerpiece</p>
+
+                    <div class="process">
+                        <h4 class="title-sm-sub">Process</h4>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="parousia-pipeline">
+                                <img class="xbox-thumb" src="images/machine_church01.jpeg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">AI Image Pipeline</span>
+                                    <span class="xbox-sub">Stable Diffusion 1.5 &rarr; Python &rarr; Unreal Engine 5</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="parousia-pipeline">
+                                <div class="xbox-inner">
+                                    <p class="xbox-note">AI was only used for the imagery on the cross altarpiece. No other art assets were made with AI.
+                                        Since the piece is a reflection on AI and the zeitgeist around it, we wanted to use it in a critical way, as part
+                                        of the message itself.</p>
+                                    <p>The images are generated live on the machine running the piece. A Python script runs Stable Diffusion 1.5 locally
+                                        and sends it a new job every few seconds, building a fresh prompt from word banks (gothic forms, machinery, decay,
+                                        palette) and randomizing the seed, denoise strength, and reference image.</p>
+                                    <p>Each image is an image-to-image pass over a fixed crucifixion composition, so the figure stays lined up with the
+                                        screens while the style drifts. The references are earlier outputs of the piece, so it keeps feeding on its own
+                                        images.</p>
+                                    <img src="images/parousia_ai_strip.jpg" alt="Five AI-generated crucifixion images from the piece, each drifting in style, palette and figure" class="fit">
+                                    <p>Unreal reloads the newest image every eight seconds and swaps it into the screen material. If generation stalls,
+                                        the piece falls back to a bank of images it made earlier.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="parousia-screens">
+                                <img class="xbox-thumb" src="images/parousia_screen_uvs.jpg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">Mapping the Cross</span>
+                                    <span class="xbox-sub">Dozens of TVs, one texture</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="parousia-screens">
+                                <div class="xbox-inner">
+                                    <p>The cross is made of dozens of TVs that together show one image. I separated the screens from the TV bodies,
+                                        joined only the screens into one mesh, and projected UVs across it, so a single texture covers the whole cross.</p>
+                                    <img src="images/parousia_screen_uvs.jpg" alt="Blender: the screens' UVs laid out over a single image, next to the CRT cross" class="fit">
+                                    <p>That way, changing the image is one texture swap in one Unreal material. It made the screens easy to animate and
+                                        lets the AI pipeline update the whole altar at once.</p>
+                                    <img src="images/parousia_screen_material.jpg" alt="Unreal Engine material graph driving the CRT screens" class="fit">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="parousia-cables">
+                                <img class="xbox-thumb" src="images/parousia_cable_shells.jpg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">Shell-Textured Cables</span>
+                                    <span class="xbox-sub">Faking volume on a low-poly mesh</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="parousia-cables">
+                                <div class="xbox-inner">
+                                    <p>I wanted cables flooding the floor of the church, but modelling them all in 3D was too heavy for both file size
+                                        and performance. I needed something lighter that also fit the retro look.</p>
+                                    <p>I used shell texturing: I duplicated the floor, made it transparent, and painted the wires on it, then used an
+                                        array modifier to stack it 10 times with very short spacing. The layers fake 3D volume while staying a few flat
+                                        planes. Notice how the stairs became a straight slope on the cable mesh.</p>
+                                    <img src="images/parousia_cable_shells.jpg" alt="Blender: wires painted as a texture on a transparent copy of the floor, stacked with an array modifier" class="fit">
+                                    <p>For the pile behind the altar, I wanted real depth so the cables coming down from the cross wouldn&rsquo;t just clip
+                                        into the ground. I sculpted a mound, scattered cables on it with a geometry nodes setup, then decimated them on top
+                                        and in front to keep it light.</p>
+                                    <img src="images/parousia_cable_pile.jpg" alt="Blender: a sculpted mound covered in procedurally scattered cables behind the altar" class="fit">
+                                    <p class="xbox-credit">Cable generation based on Joey Carlino&rsquo;s geometry nodes tutorial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <img src="images/machine_church01.jpeg" alt="Close-up of the CRT cross displaying AI-generated images of Christ" class="fit">
                     <img src="images/machine_church02.jpeg" alt="Server racks rising beneath the church's red rose windows" class="fit">
 
@@ -307,6 +385,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
 <script src="js/santoscript.js"></script>
+<script src="js/expandables.js"></script>
 
 <script src="script.js"></script>
 
