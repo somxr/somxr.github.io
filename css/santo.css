@@ -689,3 +689,66 @@ video.fit {
     transition: none;
   }
 }
+
+.xbox-code {
+  margin: 0 0 1em;
+  padding: .8em 1em;
+  background: rgba(51, 51, 51, .06);
+  border-left: solid 2px var(--black-accent);
+  overflow-x: auto;
+  font-family: ui-monospace, "Cascadia Code", Consolas, Menlo, monospace;
+  font-size: .75em;
+  line-height: 1.5;
+  tab-size: 4;
+}
+
+.xbox-inner .xbox-code {
+  width: auto;
+}
+
+/* Open box: tinted panel so it's clear you're inside it */
+.xbox-body {
+  transition: grid-template-rows .4s ease, visibility 0s .4s, background-color .3s;
+}
+
+.xbox.is-open .xbox-body {
+  background-color: rgba(51, 51, 51, .05);
+  border-top: solid 1px rgba(51, 51, 51, .25);
+}
+
+.xbox.is-open .xbox-code {
+  background: rgba(51, 51, 51, .08);
+}
+
+/* Close button at the bottom of an open box */
+.xbox-foot {
+  text-align: right;
+}
+
+.xbox-close {
+  font: inherit;
+  font-size: .85em;
+  color: inherit;
+  background: none;
+  border: solid 1px var(--black-accent);
+  padding: .3em .8em;
+  cursor: pointer;
+  transition: background-color .2s, color .2s;
+}
+
+.xbox-close:hover {
+  background-color: var(--black-accent);
+  color: var(--bg);
+}
+
+.xbox-close:focus-visible {
+  outline: solid 2px var(--black-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xbox-body,
+  .xbox.is-open .xbox-body {
+    transition: none;
+  }
+}

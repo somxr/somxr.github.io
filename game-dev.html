@@ -204,6 +204,96 @@
                     <h4 class="title-sm-sub">Tools</h4>
                     <p>Unity, ShaderLab</p>
 
+                    <div class="process">
+                        <h4 class="title-sm-sub">Process</h4>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="ringo-gpu">
+                                <img class="xbox-thumb" src="images/ringo_cpu_points.jpg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">From CPU to GPU</span>
+                                    <span class="xbox-sub">Compute shaders, buffers and kernels</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="ringo-gpu">
+                                <div class="xbox-inner">
+                                    <p>I started by graphing math functions on the CPU, with a C# script moving a GameObject
+                                        for every point. It works, but every point costs CPU time, so it caps out fast.</p>
+                                    <img src="images/ringo_cpu_points.jpg" alt="Early math function test: rows of spheres rippling in a wave pattern" class="fit">
+                                    <p>Moving the work to a compute shader is what made the scale possible. I bundle the
+                                        position data into a compute buffer, which I think of as a shipping container for the
+                                        GPU, and a kernel calculates every point in parallel. The shader then reads that
+                                        buffer to draw the cubes. That&rsquo;s how up to half a million cubes animate in real
+                                        time on modest hardware.</p>
+                                    <p>Debugging on the GPU was its own challenge. Unity&rsquo;s console is vague about compute
+                                        errors like an invalid kernel index; the real compiler errors show up in the Inspector
+                                        of the .compute file itself.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="ringo-torus">
+                                <img class="xbox-thumb" src="images/ringo_spiral_torus.jpg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">Custom Torus Functions</span>
+                                    <span class="xbox-sub">Parametric math in HLSL</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="ringo-torus">
+                                <div class="xbox-inner">
+                                    <p>To make a place you walk through rather than look at, I set the whole level inside a
+                                        torus. I looked up parametric torus formulas and wrote 6 original functions: 5
+                                        variations on the torus and one sphere, with volumes travelling through and stripes
+                                        animated along the path.</p>
+                                    <p>Each function takes a point&rsquo;s position on the surface (u, v) plus time, and
+                                        returns where it sits in 3D. r1 is the radius of the ring and r2 the thickness of the
+                                        tube. Feeding time into sin() on those values is what makes the torus pulse and
+                                        twist.</p>
+<pre class="xbox-code"><code>float3 TorusSpiral (float u, float v, float t) {
+    float r1 = 0.7;
+    float r2 = 0.2 + 0.05 * sin(PI * (8.0 * u + 4.0 * v + 2.0 * t));
+    float twist = sin(PI * (2.0 * u + 0.2*t));
+    float angle = PI * (v + twist);
+    float s = r2 * cos(angle) + r1;
+    float3 p;
+    p.x = s * sin(PI * u);
+    p.y = r2 * sin(angle);
+    p.z = s * cos(PI * u);
+    return p;
+}</code></pre>
+                                    <img src="images/ringo_spiral_torus.jpg" alt="The TorusSpiral function rendered as a rippling, twisting rainbow torus" class="fit">
+                                    <p>The functions cycle and transition into each other, and the cube resolution animates
+                                        too. Since some animations are out of sync, the loop never plays out quite the same
+                                        way twice.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="xbox">
+                            <button class="xbox-head" type="button" aria-expanded="false" aria-controls="ringo-color">
+                                <img class="xbox-thumb" src="images/ringo_color_torus.jpg" alt="">
+                                <span class="xbox-titles">
+                                    <span class="xbox-title">Animated World-Space Color</span>
+                                    <span class="xbox-sub">A rainbow that moves through space</span>
+                                </span>
+                                <span class="xbox-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="xbox-body" id="ringo-color">
+                                <div class="xbox-inner">
+                                    <p>Each cube gets its color from its position in the world, so one shader paints the whole
+                                        RGB spectrum with a unique color per point. The starting version gave each point a
+                                        static color over a small -1 to 1 space.</p>
+                                    <img src="images/ringo_color_graph.jpg" alt="Unity shader graph for the animated world-space color" class="fit">
+                                    <p>I reworked it to cover the much bigger, walkable space and to shift over time, so the
+                                        hues roll through the tunnel as you walk.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <img src="images/Sphere.png" alt="" class="fit">
                     <img src="images/tunnel1.png" alt="Tunnel" class="fit">
 
