@@ -220,17 +220,20 @@
                             </button>
                             <div class="xbox-body" id="ringo-gpu">
                                 <div class="xbox-inner">
+                                    <p>Every cube in Ringo is moved by the graphics card instead of the processor, which is what lets
+                                        half a million of them animate at once.</p>
                                     <p>I started by graphing math functions on the CPU, with a C# script moving a GameObject
                                         for every point. It works, but every point costs CPU time, so it caps out fast.</p>
                                     <img src="images/ringo_cpu_points.jpg" alt="Early math function test: rows of spheres rippling in a wave pattern" class="fit">
-                                    <p>Moving the work to a compute shader is what made the scale possible. I bundle the
-                                        position data into a compute buffer, which I think of as a shipping container for the
-                                        GPU, and a kernel calculates every point in parallel. The shader then reads that
-                                        buffer to draw the cubes. That&rsquo;s how up to half a million cubes animate in real
-                                        time on modest hardware.</p>
-                                    <p>Debugging on the GPU was its own challenge. Unity&rsquo;s console is vague about compute
-                                        errors like an invalid kernel index; the real compiler errors show up in the Inspector
-                                        of the .compute file itself.</p>
+                                    <p>Moving the work to a compute shader is what made the scale possible. The positions live in a
+                                        compute buffer on the GPU, a kernel calculates every point in parallel, and the shader reads that
+                                        buffer to draw the cubes.</p>
+                                    <img src="images/ringo_stats_tight.jpg" alt="Ringo WorldStarr in the Unity Editor with the Statistics panel: 181.8 FPS, 5.5 ms, 6.0M triangles, 16 batches" class="fit">
+                                    <p>With half a million cubes on screen, Ringo runs at about 180 FPS (5.5 ms per frame) in the Unity
+                                        Editor on my RTX 2080 Ti. Instancing draws all of them in 16 batches.</p>
+                                    <img src="images/ringo_profiler_annotated.png" alt="Unity Profiler timeline: the CPU spends 4.27 of its 4.51 ms frame waiting on the GPU" class="fit">
+                                    <p>In the Profiler, the CPU spends 4.27 of its 4.51 ms frame just waiting for the GPU. The heavy
+                                        lifting is happening on the graphics card now.</p>
                                 </div>
                             </div>
                         </div>
@@ -296,10 +299,10 @@
                         </div>
                     </div>
 
-                    <img src="images/Sphere.png" alt="" class="fit">
-                    <img src="images/tunnel1.png" alt="Tunnel" class="fit">
+                    <img src="images/ringo_shot_tunnel.jpg" alt="A rippling purple and blue tunnel of cubes curving over the walkway" class="fit">
+                    <img src="images/ringo_shot_rings.jpg" alt="Rings of pink and orange cubes forming a tunnel over the walkway" class="fit">
 
-                    <img src="images/tunnel2.png" alt="Tunnel 2" class="fit">
+                    <img src="images/ringo_shot_cubes.jpg" alt="A field of floating cubes shifting from red to green above the walkway" class="fit">
 
                 </article>
             </section>
@@ -480,5 +483,6 @@
 <script src="js/expandables.js"></script>
 
 <script src="script.js"></script>
+<script src="js/image-zoom.js"></script>
 
 </html>
